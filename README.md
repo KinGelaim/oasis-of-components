@@ -1,2 +1,3 @@
-# oasis-of-components-
+# oasis-of-components
+
 Repository for components (Angular)
