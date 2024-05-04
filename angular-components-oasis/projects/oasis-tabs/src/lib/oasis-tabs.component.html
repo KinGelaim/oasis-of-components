@@ -1,0 +1,29 @@
+<div
+    #tabsBlock
+    class="tabs"
+    (mouseenter)="this.listenerOnHover(true)"
+    (mouseleave)="this.listenerOnHover(false)"
+    (mousewheel)="this.scrollTabs($event)">
+  <div
+      class="tabs__main tab"
+      [style.gap.px]="this.tabsSettings.gap">
+    @for (item of this.items; track $index) {
+      <div
+          class="tab__item"
+          [class.tab_disabled]="item.disabled"
+          (click)="this.selectItem(item); scrollToWholeTabOnClick($event);">
+        <p class="tab__text">
+          {{ item.display }}
+        </p>
+
+        @if (item.selected && !item.disabled) {
+          <div class="tab__bottom-border"></div>
+        }
+
+        @if (!item.disabled) {
+          <div class="tab__bottom-border tab__bottom-border_hover"></div>
+        }
+      </div>
+    }
+  </div>
+</div>

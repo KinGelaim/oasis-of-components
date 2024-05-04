@@ -1,14 +1,32 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { OasisTabsComponent } from 'oasis-tabs';
+
+import { AllComponents, AngularComponent } from './angular-component.enum';
+import { TabsComponent } from './tabs/tabs.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, OasisTabsComponent],
+  imports: [TabsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angular-components-oasis-preview';
+  public AngularComponent = AngularComponent;
+
+  public currentAngularComponent = AngularComponent.Tabs;
+
+  public keysAllComponents: AngularComponent[] = [];
+
+  public valuesAllComponents: string[] = [];
+
+  public constructor() {
+    for (let entry of AllComponents.entries()) {
+      this.keysAllComponents.push(entry[0]);
+      this.valuesAllComponents.push(entry[1]);
+    }
+  }
+
+  public changeComponent(newComponent: AngularComponent) {
+    this.currentAngularComponent = newComponent;
+  }
 }

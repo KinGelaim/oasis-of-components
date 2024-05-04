@@ -1,0 +1,81 @@
+@use "./../../../shared/css/base/reset";
+
+* {
+  box-sizing: border-box;
+}
+
+.tabs {
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: #8da6c7;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &__main {
+    display: inline-flex;
+    align-items: flex-start;
+    flex-direction: row;
+
+    height: 44px;
+    border-bottom: 1px solid #8da6c7;
+  }
+}
+
+.tab {
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-bottom: 8px;
+    cursor: pointer;
+
+    &:hover .tab__bottom-border_hover {
+      transition: all 0.2s;
+      opacity: 1;
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    color: #0e2648;
+    font-family: 'Roboto';
+    font-size: 18px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 22px;
+  }
+
+  &__bottom-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #1669a1;
+
+    &_hover {
+      transition: all 0.2s;
+      opacity: 0;
+      background: rgba(#5479ab, 0.4);
+    }
+  }
+
+  &_disabled .tab__text {
+    color: #bdbdbd;
+  }
+}

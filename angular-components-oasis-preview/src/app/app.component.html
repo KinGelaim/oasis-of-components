@@ -1,1 +1,21 @@
-<lib-oasis-tabs></lib-oasis-tabs>
+<div class="container">
+  <div>  
+    @for (component of keysAllComponents; track $index) {
+      <div
+          class="show-component"
+          [class.show-component_active]="this.currentAngularComponent == component"
+          (click)="this.changeComponent(component)">
+        <p>{{this.valuesAllComponents[$index]}}</p>
+      </div>
+    }
+  </div>
+
+  <div class="component-container">
+    @switch(this.currentAngularComponent) {
+      <!-- Вкладки -->
+      @case (AngularComponent.Tabs) {
+        <app-tabs></app-tabs>
+      }
+    }
+  </div>
+</div>
