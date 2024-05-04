@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lib-oasis-tabs',
+  selector: 'oasis-tabs',
   standalone: true,
   imports: [],
   template: `
