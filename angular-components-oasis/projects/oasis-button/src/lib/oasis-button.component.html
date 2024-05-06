@@ -1,0 +1,55 @@
+<!--Обычная кнопка-->
+<div
+    class="button
+            button_{{this.buttonSettings.state}}
+            button_{{this.buttonSettings.type}}
+            button_{{this.buttonSettings.size}}"
+    [class.button_no-padding]="this.buttonSettings.widthUnit != ButtonUnit.None"
+    [class.button_no-text]="this.buttonSettings.textButton == ''"
+    [style.background-color]="this.buttonSettings.type == ButtonType.Main
+                              ? this.currentColor
+                              : this.buttonSettings.transparentColor"
+    [style.border]="buttonSettings.type == ButtonType.MainTransparent
+                    ? this.currentColor + ' 1px solid'
+                    : null"
+    [style.color]="buttonSettings.type == ButtonType.Main
+                  ? this.buttonSettings.whiteColor
+                  : this.currentColor"
+    [style.width]="this.buttonSettings.widthUnit == ButtonUnit.None
+                    ? 'auto'
+                    : this.buttonSettings.width + this.buttonSettings.widthUnit"
+    (mouseover)="mouseOver($event)"
+    (mousedown)="mouseDown($event)"
+    (mouseup)="mouseUp($event)"
+    (mouseout)="mouseOut($event)"
+    (click)="clickButton($event)">
+  <!--Картинка слева-->
+  @if (this.buttonSettings.positionIconUrl == ButtonIconPosition.Left) {
+    <div
+      class="button__icon button__icon_left button__icon_{{this.buttonSettings.size}}"
+      [style.background-image]="'url(' + this.currentIcon + ')'"
+      [style.background-position]="'center'"
+      [style.background-repeat]="'no-repeat'">
+    </div>
+  }
+
+  <!--Текст кнопки-->
+  <p
+      class="button__text"
+      [style.border-bottom]="this.buttonSettings.type == ButtonType.Link
+                              && (this.buttonSettings.state == ButtonState.Hover || this.buttonSettings.state == ButtonState.Click)
+                            ? this.currentColor + ' 1px solid'
+                            : null">
+    {{this.buttonSettings.textButton}}
+  </p>
+
+  <!--Картинка справа-->
+  @if (this.buttonSettings.positionIconUrl == ButtonIconPosition.Right) {
+    <div
+      class="button__icon button__icon_right button__icon_{{this.buttonSettings.size}}"
+      [style.background-image]="'url(' + this.currentIcon + ')'"
+      [style.background-position]="'center'"
+      [style.background-repeat]="'no-repeat'">
+    </div>
+  }
+</div>

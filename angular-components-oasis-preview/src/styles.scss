@@ -13,3 +13,85 @@
   font-weight: 700;
   src: local('Roboto Bold'), local('Roboto-Bold'), url('./assets/fonts/Roboto-Bold.ttf') format('truetype');
 }
+
+/* Основной стиль для всего приложения*/
+html {
+  font-style: normal;
+}
+
+p,
+label {
+  font-size: 15px;
+  margin: 0;
+}
+
+select,
+input {
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.modal {
+  display: flex;
+
+  &-form {
+    margin-right: 100px;
+  }
+
+  &-options {
+    display: block;
+    position: relative;
+    padding-left: 0px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    word-break: break-all;
+  }
+}
+
+input[type='checkbox'] {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
+button {
+  height: 30px;
+  border: 1px solid black;
+  font-size: 15px;
+  background: white;
+  font-weight: 600;
+  padding: 0px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightgrey;
+  }
+}
+
+option,
+select {
+  font-size: 15px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid black;
+  padding: 1px 5px;
+}
+
+textarea,
+p,
+label,
+select,
+input,
+button {
+  font-family: 'Roboto';
+}

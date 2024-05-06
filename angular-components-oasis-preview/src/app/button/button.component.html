@@ -1,0 +1,165 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Наименование кнопки
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.buttonSettings.textButton"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер кнопки
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options button-size"
+              [(ngModel)]="this.buttonSettings.size">
+            <option [value]="ButtonSize.Small">Маленькая (S)</option>
+            <option [value]="ButtonSize.Medium">Средняя (M)</option>
+            <option [value]="ButtonSize.Large">Большая (L)</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина кнопки
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.buttonSettings.width"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.buttonSettings.widthUnit">
+            <option [value]="ButtonUnit.None">Отсутствует</option>
+            <option [value]="ButtonUnit.Pixel">Пиксели</option>
+            <option [value]="ButtonUnit.Percent">Проценты</option>
+            <option [value]="ButtonUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="ButtonUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип кнопки
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options button-type"
+              [(ngModel)]="this.buttonSettings.type"
+              (change)="this.changeType($event)">
+            <option [value]="ButtonType.Main">Стандартная</option>
+            <option [value]="ButtonType.MainTransparent">Стандартная прозрачная</option>
+            <option [value]="ButtonType.WithoutBorder">Без рамки</option>
+            <option [value]="ButtonType.Link">Ссылка</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Состояние
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.buttonSettings.state">
+            <option [value]="ButtonState.Default">Стандартное</option>
+            <option [value]="ButtonState.Hover">Наведенное</option>
+            <option [value]="ButtonState.Click">Нажатое</option>
+            <option [value]="ButtonState.Disabled">Выключенное</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Вывод иконки
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.buttonSettings.positionIconUrl">
+            <option [value]="ButtonIconPosition.NotDisplay">Отсутствует</option>
+            <option [value]="ButtonIconPosition.Left">Слева</option>
+            <option [value]="ButtonIconPosition.Right">Справа</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Стандартный цвет фона кнопки
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="this.buttonSettings.backgroundDefaultColor"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Цвет наведения фона кнопки
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="this.buttonSettings.backgroundHoverColor"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Цвет нажатия фона кнопки
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="this.buttonSettings.backgroundClickColor"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="buttons">
+    <div class="button">
+      <oasis-button
+        [buttonSettings]="this.buttonSettings"
+        (onClick)="this.buttonClick()">
+      </oasis-button>
+    </div>
+  </div>
+</div>

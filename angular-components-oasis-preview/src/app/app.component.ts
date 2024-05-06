@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 
 import { AllComponents, AngularComponent } from './angular-component.enum';
 import { TabsComponent } from './tabs/tabs.component';
+import { ButtonComponent } from './button/button.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TabsComponent],
+  imports: [
+    TabsComponent,
+    ButtonComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -28,27 +28,27 @@ export class TabsComponent {
       display: 'Контент 1',
       disableLeftIcon: false,
       disableRightIcon: true,
-      leftIconUrlDefault: './assets/test_assets/icon__add_default.png',
-      leftIconUrlHover: './assets/test_assets/icon__add_hover.png',
-      leftIconUrlClick: './assets/test_assets/icon__add_click.png',
-      leftIconUrlDisabled: './assets/test_assets/icon__add_disabled.png',
-      rightIconUrlDefault: './assets/test_assets/icon__copy_default.png',
-      rightIconUrlHover: './assets/test_assets/icon__copy_hover.png',
-      rightIconUrlClick: './assets/test_assets/icon__copy_click.png',
-      rightIconUrlDisabled: './assets/test_assets/icon__copy_disabled.png'
+      leftIconUrlDefault: './assets/test_assets/tabs/icon__add_default.png',
+      leftIconUrlHover: './assets/test_assets/tabs/icon__add_hover.png',
+      leftIconUrlClick: './assets/test_assets/tabs/icon__add_click.png',
+      leftIconUrlDisabled: './assets/test_assets/tabs/icon__add_disabled.png',
+      rightIconUrlDefault: './assets/test_assets/tabs/icon__copy_default.png',
+      rightIconUrlHover: './assets/test_assets/tabs/icon__copy_hover.png',
+      rightIconUrlClick: './assets/test_assets/tabs/icon__copy_click.png',
+      rightIconUrlDisabled: './assets/test_assets/tabs/icon__copy_disabled.png'
     },
     {
       id: 1,
       display: 'Контент 2',
-      leftIconUrlDefault: './assets/test_assets/icon__clear.png',
+      leftIconUrlDefault: './assets/test_assets/tabs/icon__clear.png',
       leftIconAreaWidth: 140,
       rightIconAreaWidth: 40,
-      rightIconUrlDefault: './assets/test_assets/icon__delete.png'
+      rightIconUrlDefault: './assets/test_assets/tabs/icon__delete.png'
     },
     {
       id: 2,
       display: '',
-      leftIconUrlDefault: './assets/test_assets/icon__documents.png',
+      leftIconUrlDefault: './assets/test_assets/tabs/icon__documents.png',
       leftIconAreaWidth: 70
     }
   ];

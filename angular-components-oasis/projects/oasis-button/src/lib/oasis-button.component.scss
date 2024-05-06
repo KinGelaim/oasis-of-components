@@ -1,0 +1,143 @@
+@use "./../../../shared/css/base/reset";
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  word-break: break-word;
+  font-family: 'Roboto';
+
+  &_small {
+    font-size: 12px;
+    height: 24px;
+    font-weight: 400;
+    padding: 0px 16px;
+  }
+
+  &_medium {
+    font-size: 14px;
+    height: 32px;
+    font-weight: 500;
+    padding: 0px 16px;
+  }
+
+  &_large {
+    font-size: 16px;
+    height: 40px;
+    font-weight: 500;
+    padding: 0px 32px;
+  }
+
+  &_no-padding {
+    padding: 0px;
+  }
+
+  &_main-transparent {
+    box-sizing: border-box;
+  }
+
+  &_without-border {
+    height: auto;
+    padding: 0px;
+  }
+
+  &_link {
+    height: auto;
+    padding: 0px;
+
+    & .button__text {
+      border-bottom: 1px solid transparent;
+    }
+
+    &.button_small {
+      & .button__text {
+        padding-bottom: 1px;
+      }
+    }
+
+    &.button_medium,
+    &.button_large {
+      & .button__text {
+        padding-bottom: 2px;
+      }
+    }
+  }
+
+  &_no-text {
+    &.button_small,
+    &.button_medium {
+      padding: 0 4px;
+
+      &.button_main-transparent {
+        padding: 0 3px;
+      }
+
+      &.button_no-padding {
+        padding: 0px;
+      }
+    }
+
+    &.button_large {
+      padding: 0 10px;
+
+      &.button_main-transparent {
+        padding: 0 9px;
+      }
+
+      &.button_no-padding {
+        padding: 0px;
+      }
+    }
+
+    .button__icon_left {
+      margin-right: 0px;
+    }
+
+    .button__icon_right {
+      margin-left: 0px;
+    }
+  }
+
+  &_disabled {
+    cursor: default;
+  }
+
+  &__icon {
+    &_left {
+      &.button__icon_small {
+        margin-right: 4px;
+      }
+
+      &.button__icon_medium,
+      &.button__icon_large {
+        margin-right: 6px;
+      }
+    }
+
+    &_right {
+      &.button__icon_small {
+        margin-left: 4px;
+      }
+
+      &.button__icon_medium,
+      &.button__icon_large {
+        margin-left: 6px;
+      }
+    }
+
+    &_small {
+      width: 16px;
+      height: 16px;
+      background-size: 16px 16px;
+    }
+
+    &_medium,
+    &_large {
+      width: 24px;
+      height: 24px;
+      background-size: 24px 24px;
+    }
+  }
+}
