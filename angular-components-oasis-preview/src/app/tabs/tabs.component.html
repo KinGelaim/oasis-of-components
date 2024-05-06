@@ -1,9 +1,165 @@
-<div class="tabs">
-  <div class="tab">
-    <oasis-tabs [tabsSettings]="this.tabsSettingsFirst" [items]="this.tabsItemsFirst"></oasis-tabs>
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер между вкладками
+          </label>
+        </td>
+        <td>
+          <input
+            [value]="this.tabGap"
+            (input)="this.setGapWidth($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина правой иконки на второй вкладке
+          </label>
+        </td>
+        <td>
+          <input
+            [value]="this.tabsItemsFirst[1].rightIconAreaWidth"
+            (input)="this.setIconAreaWidth($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Общая доступная ширина вкладок
+          </label>
+        </td>
+        <td>
+          <input (input)="this.changeWidth($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              (change)="this.changeTypeWidth($event)">
+            <option [value]="TabsUnit.None">Отсутствует</option>
+            <option [value]="TabsUnit.Pixel">Пиксели</option>
+            <option [value]="TabsUnit.Percent">Проценты</option>
+            <option [value]="TabsUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="TabsUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Добавить элемент в первую строку
+          </label>
+        </td>
+        <td>
+          <input #inputValueArray1/><br/>
+          <button
+              (click)="this.addTabItem(inputValueArray1, this.tabsItemsFirst)">
+            Добавить
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Добавить элемент во вторую строку
+          </label>
+        </td>
+        <td>
+          <input #inputValueArray2/>
+          <button
+              (click)="this.addTabItem(inputValueArray2, this.tabsItemsSecond)">
+            Добавить
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выбрать элемент с номером:
+          </label>
+        </td>
+        <td>
+          <input #tabIndexSetValue/>
+          <button
+              (click)="this.setValue(tabIndexSetValue)">
+              Выбрать
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выбрать левую иконку с номером:
+          </label>
+        </td>
+        <td>
+          <input #tabIndexSetIcon/>
+          <button
+              (click)="this.setIconValue(tabIndexSetIcon)">
+              Выбрать
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Отключить/включить элемент с номером:
+          </label>
+        </td>
+        <td>
+          <input #tabIndexDisableTab/>
+          <button
+              (click)="this.setValue(tabIndexDisableTab, true)">
+              Выбрать
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Разрешить повторный вызов элемента для первого компонента вкладок
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            (click)="this.changeRepeatEmit($event)">
+        </td>
+      </tr>
+    </table>
   </div>
 
-  <div class="tab">
-    <oasis-tabs [tabsSettings]="this.tabsSettingsSecond" [items]="this.tabsItemsSecond"></oasis-tabs>
+  <div class="tabs">
+    <div class="tab">
+      <oasis-tabs
+        [tabsSettings]="this.tabsSettingsFirst"
+        [items]="this.tabsItemsFirst">
+      </oasis-tabs>
+    </div>
+
+    <div class="tab">
+      <oasis-tabs
+        [tabsSettings]="this.tabsSettingsSecond"
+        [items]="this.tabsItemsSecond">
+      </oasis-tabs>
+    </div>
   </div>
 </div>

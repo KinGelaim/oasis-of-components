@@ -1,25 +1,63 @@
 <div
     #tabsBlock
     class="tabs"
+    [ngStyle]="{
+      'width': tabsSettings.width != null && tabsSettings.widthUnit != TabsWidth.None
+              ? (tabsSettings.width) + (tabsSettings.widthUnit)
+              : ''}"
     (mouseenter)="this.listenerOnHover(true)"
     (mouseleave)="this.listenerOnHover(false)"
     (mousewheel)="this.scrollTabs($event)">
   <div
       class="tabs__main tab"
-      [style.gap.px]="this.tabsSettings.gap">
+      [style.gap.px]="this.tabsSettings.gap"
+      [ngStyle]="{
+        'width': this.tabsSettings.width != null && this.tabsSettings.widthUnit != TabsWidth.None
+                ? (this.tabsSettings.width) + (this.tabsSettings.widthUnit)
+                : 'auto'}">
     @for (item of this.items; track $index) {
       <div
           class="tab__item"
           [class.tab_disabled]="item.disabled"
-          (click)="this.selectItem(item); scrollToWholeTabOnClick($event);">
+          (click)="this.selectItem([item, false, false]); this.scrollToWholeTabOnClick($event);">
+        <!-- Левая иконка -->
+        @if (item.leftIconUrlDefault || item.leftIconUrlDisabled) {
+          <div
+            class="tab__icon tab__icon-left"
+            [style.width.px]="item.leftIconAreaWidth"
+            [style.background-image]="'url('+ (!item.disableLeftIcon ? item.leftIconUrlDefault : item.leftIconUrlDisabled) +')'"
+            (click)="this.selectItem([item, true, false])"
+            (mouseenter)="this.setBackground($event.target, item, 'hover', true)"
+            (mouseleave)="this.setBackground($event.target, item, 'default', true)"
+            (mousedown)="this.setBackground($event.target, item, 'click', true)"
+            (mouseup)="this.setBackground($event.target, item, 'default', true)">
+          </div>
+        }
+
+        <!-- Наименование вкладки -->
         <p class="tab__text">
-          {{ item.display }}
+          {{item.display}}
         </p>
 
+        <!-- Правая иконка -->
+        @if (item.rightIconUrlDefault || item.rightIconUrlDisabled) {
+          <div
+            class="tab__icon tab__icon-right"
+            [style.width.px]="item.rightIconAreaWidth"
+            [style.background-image]="'url('+ (!item.disableRightIcon ? item.rightIconUrlDefault : item.rightIconUrlDisabled) +')'"
+            (click)="this.selectItem([item, false, true])"
+            (mouseenter)="this.setBackground($event.target, item, 'hover', false)"
+            (mouseleave)="this.setBackground($event.target, item, 'default', false)"
+            (mousedown)="this.setBackground($event.target, item, 'click', false)"
+            (mouseup)="this.setBackground($event.target, item, 'default', false)">
+          </div>
+        }
+
+        <!-- Нижняя полоса (выделение)-->
         @if (item.selected && !item.disabled) {
           <div class="tab__bottom-border"></div>
         }
-
+        
         @if (!item.disabled) {
           <div class="tab__bottom-border tab__bottom-border_hover"></div>
         }

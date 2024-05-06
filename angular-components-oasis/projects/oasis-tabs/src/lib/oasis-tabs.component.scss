@@ -53,11 +53,28 @@
   &__text {
     display: inline-block;
     color: #0e2648;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 500;
     font-style: normal;
     line-height: 22px;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &-left {
+      margin-right: 4px;
+    }
+
+    &-right {
+      margin-left: 4px;
+    }
   }
 
   &__bottom-border {
