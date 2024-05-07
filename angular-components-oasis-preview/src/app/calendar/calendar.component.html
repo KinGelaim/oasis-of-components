@@ -1,0 +1,543 @@
+<div class='calendar-block'>
+  <div>
+    <div class="modal-form">
+      <label class="modal-options">
+        Возможность<br />выбирать в обратную сторону
+        <input
+          class="input-checkbox"
+          type="checkbox"
+          (input)="calendarSettingsMain.setCalendarReverseSelectable($event)">
+        <span class="checkmark"></span>
+      </label>
+
+      <hr />
+
+      <div>
+        <label class="modal-options">
+          Ограничение<br />нижней даты
+          <input
+            class="input-checkbox"
+            type="checkbox"
+            [disabled]="this.calendarSettingsMain.bottomDate == null"
+            [(ngModel)]="calendarSettingsMain.calendarBottomDateBounded"
+            (input)="calendarSettingsMain.setCalendarBottomDateBounded($event)">
+          <span
+            class="checkmark"
+            [class.disabled]="this.calendarSettingsMain.bottomDate == null">
+          </span>
+        </label>
+
+        <label class="modal-options">
+          Ограничение<br />верхней даты
+          <input
+            class="input-checkbox"
+            type="checkbox"
+            [(ngModel)]="calendarSettingsMain.calendarTopDateBounded"
+            (input)="calendarSettingsMain.setCalendarTopDateBounded($event)">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+    </div>
+
+    <oasis-calendar
+      [calendarSettings]="calendarSettingsMain.calendarSettingsMulti"
+      (mouseenterWhenCalendarClosed)="calendarSettingsMain.mouseenter($event)"
+      (mouseleaveWhenCalendarClosed)="calendarSettingsMain.mouseleave($event)">
+    </oasis-calendar>
+
+    <div class="modal-form">
+      <button
+          class="open-btn"
+          (click)="calendarSettingsMain.clearMultiDateWithEmit()">
+        Сбросить дату в календаре (с обратным)
+      </button>
+    </div>
+
+    <div class="modal-form">
+      <button
+          class="open-btn"
+          (click)="calendarSettingsMain.clearMultiDateWithoutEmit()">
+        Сбросить дату в календаре (без обратного)
+      </button>
+    </div>
+
+    <div class="modal-form">
+      <button
+          class="open-btn"
+          (click)="calendarSettingsMain.setMultiDatesWithEmit()">
+        Установить границы в качестве дат в календаре
+      </button>
+    </div>
+
+    <br/>
+
+    <div class="calendar-info">
+      <label>Вывод дат (меняются колбэком):</label>
+      <br/>
+      <label>{{calendarSettingsMain.firstMultiDate}}</label>
+      <br/>
+      <label>{{calendarSettingsMain.secondMultiDate}}</label>
+    </div>
+
+    <br/>
+
+    <div>
+      <p>На примере двойного календаря можно<br/>увидеть отработку событий по наведению<br/>и убиранию курсора мыши, а также закрытие<br/>календаря (смотреть в консоли)</p>
+    </div>
+  </div>
+
+  <div class="vertical-line"></div>
+
+  <div class="select-dates">
+    <label class="modal-options">
+      Нижняя дата
+      <oasis-calendar [calendarSettings]="calendarSettingsMain.calendarSettingsSingleBottomDate"></oasis-calendar>
+    </label>
+
+    <label class="modal-options">
+      Верхняя дата
+      <oasis-calendar [calendarSettings]="calendarSettingsMain.calendarSettingsSingleTopDate"></oasis-calendar>
+    </label>
+
+    <div class="modal-form">
+      <button
+        class="open-btn"
+        (click)="calendarSettingsMain.setDateInBottomDate()"
+      >Установить 22.12.2022 в нижнюю дату</button>
+    </div>
+
+    <div class="modal-form">
+      <button
+        class="open-btn"
+        (click)="calendarSettingsMain.setDateInBottomDateWithoutEmit()"
+      >Установить дату (без обратного вызова)</button>
+    </div>
+
+    <div class="modal-form">
+      <button
+        class="open-btn"
+        (click)="calendarSettingsMain.clearBottomDate()"
+      >Очистить календарь</button>
+    </div>
+
+    <div class="modal-form">
+      <button
+        class="open-btn"
+        (click)="calendarSettingsMain.getDates()"
+      >Получить дату в календарях</button>
+    </div>
+
+    <div class="modal-form">
+      <button
+        class="open-btn"
+        (click)="calendarSettingsMain.checkToday()"
+      >Проверить "сегодня" в календаре</button>
+    </div>
+
+    <br/>
+
+    <div>
+      <label>Вывод дат (меняются колбэком):</label>
+      <br/>
+      <label>{{calendarSettingsMain.bottomDate}}</label>
+      <br/>
+      <label>{{calendarSettingsMain.topDate}}</label>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- Календари с графиками -->
+<div>
+  <div>
+    <div>
+      Календарь с отключенными днями недели
+    </div>
+
+    <div class='calendar-block'>
+      <div class="pt-20">
+        <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsMultiFiveDays"></oasis-calendar>
+      </div>
+      <div>
+        <div>
+          <input [(ngModel)]="calendarSettingsType.mondayDisable" type="checkbox" (change)="calendarSettingsType.disableWeekday()">
+          <input [(ngModel)]="calendarSettingsType.tuesdayDisable" type="checkbox" (change)="calendarSettingsType.disableWeekday()">
+          <input [(ngModel)]="calendarSettingsType.wednesdayDisable" type="checkbox" (change)="calendarSettingsType.disableWeekday()">
+          <input [(ngModel)]="calendarSettingsType.thursdayDisable" type="checkbox" (change)="calendarSettingsType.disableWeekday()">
+          <input [(ngModel)]="calendarSettingsType.fridayDisable" type="checkbox" (change)="calendarSettingsType.disableWeekday()">
+          <input [(ngModel)]="calendarSettingsType.saturdayDisable" type="checkbox" (change)="calendarSettingsType.disableWeekday()">
+          <input [(ngModel)]="calendarSettingsType.sundayDisable" type="checkbox" (change)="calendarSettingsType.disableWeekday()">
+        </div>
+        <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsSingleFiveDays"></oasis-calendar>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      Календарь с выбранными днями
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsMultiTwoDays"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsSingleTwoDays"></oasis-calendar>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      Календарь "Сутки через трое" x2 (без выделенного фона)
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsMultiDayAfterThreeDouble"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsSingleDayAfterThreeDouble"></oasis-calendar>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      Календарь "Сутки через трое" (с фоном)
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsMultiDayAfterThree"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsSingleDayAfterThree"></oasis-calendar>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      Календарь "Сутки через трое" (с фоном и стандартным цветом)
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsMultiDayAfterThreeDefaultColor"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsSingleDayAfterThreeDefaultColor"></oasis-calendar>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      Календарь по графику работу
+    </div>
+
+    <div class='calendar-block'>
+      <div class="modal-options">
+        Стартовая дата:
+        <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsStartDate"></oasis-calendar>
+        <label>
+          Количество дней в рабочем цикле <br />
+          <input (input)="calendarSettingsType.changeWorkCycleDays($event)" value="{{this.calendarSettingsType.workCycleDays}}" />
+        </label>
+      </div>
+      
+      <div>
+        <br/><oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsMultiWorkSchedule"></oasis-calendar>
+        <br/><oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsSingleWorkSchedule"></oasis-calendar>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      Обычный календарь, но с выделенными днями
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsMultiColoredDays"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsSingleColoredDays"></oasis-calendar>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      Обычный календарь, но с рядом отключённых дней
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsMultiDisabledDays"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsSingleDisabledDays"></oasis-calendar>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      Обычный календарь, но с рядом отключённых дней (цветной)
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsMultiDisabledDaysColor"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsType.calendarSettingsSingleDisabledDaysColor"></oasis-calendar>
+    </div>
+
+    <div class="modal-form">
+      <button
+          class="open-btn"
+          (click)="calendarSettingsType.clearMultiDate()">
+        Сбросить дату в календаре
+      </button>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- Нововведение по календарю (v2.0.0)-->
+<div>
+  <div>
+    <div>
+      <label class="modal-options">
+        Отключить оба календаря
+        <input [(ngModel)]="calendarSettingsVisual.disabled" type="checkbox" (change)="calendarSettingsVisual.setDisabled()">
+      </label>
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsMultiDisable"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleDisable"></oasis-calendar>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <label class="modal-options">
+        Отметить ошибкой календари
+        <input [(ngModel)]="calendarSettingsVisual.errored" type="checkbox" (change)="calendarSettingsVisual.setError()">
+      </label>
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsMultiError"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleError"></oasis-calendar>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <label class="modal-options">
+        Ширина календаря <br />
+        <input (input)="calendarSettingsVisual.changeWidth($event)" value="100" />
+      </label>
+
+      <p>Единицы измерения ширины календаря</p>
+      <select class="modal-options" (change)="calendarSettingsVisual.changeCalendarWidth($event)">
+        <option [value]="calendarSettingsVisual.CalendarUnit.None">Отсутствует</option>
+        <option [value]="calendarSettingsVisual.CalendarUnit.Pixel">Пиксели</option>
+        <option [value]="calendarSettingsVisual.CalendarUnit.Percent">Проценты</option>
+        <option [value]="calendarSettingsVisual.CalendarUnit.ViewportWidth">Ширина экрана</option>
+        <option [value]="calendarSettingsVisual.CalendarUnit.ViewportHeight">Высота экрана</option>
+      </select>
+    </div>
+
+    <div>
+      <label class="modal-options">
+        Высота календаря <br />
+        <input (input)="calendarSettingsVisual.changeHeight($event)" value="100" />
+      </label>
+
+      <p>Единицы измерения высоты календаря</p>
+      <select class="modal-options" (change)="calendarSettingsVisual.changeCalendarHeight($event)">
+        <option [value]="calendarSettingsVisual.CalendarUnit.None">Отсутствует</option>
+        <option [value]="calendarSettingsVisual.CalendarUnit.Pixel">Пиксели</option>
+        <option [value]="calendarSettingsVisual.CalendarUnit.Percent">Проценты</option>
+        <option [value]="calendarSettingsVisual.CalendarUnit.ViewportWidth">Ширина экрана</option>
+        <option [value]="calendarSettingsVisual.CalendarUnit.ViewportHeight">Высота экрана</option>
+      </select>
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsMultiWidthHeight"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleWidthHeight"></oasis-calendar>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <label class="modal-options">Размер календаря</label>
+      <select class="modal-options" (change)="calendarSettingsVisual.changeSize($event)">
+        <option [value]="calendarSettingsVisual.CalendarSize.Medium">Средний</option>
+        <option [value]="calendarSettingsVisual.CalendarSize.Small">Маленький</option>
+      </select>
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsMultiSize"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleSize"></oasis-calendar>
+    </div>
+  </div>
+
+  <br/>
+
+  <div>
+    <label class="modal-options">Календари в виде иконок</label>
+    <div class="cells">
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon1"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon2"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon3"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon4"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon5"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon6"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon7"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon8"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon9"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleOnlyIcon10"></oasis-calendar>
+    </div>
+  </div>
+
+  <br/>
+
+  <div>
+    <label class="modal-options">Автоматическое открытие календаря вверх</label>
+    <div class="cells">
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsMultiAutomaticVertical"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleAutomaticVertical"></oasis-calendar>
+    </div>
+  </div>
+
+  <br/>
+
+  <div>
+    <label class="modal-options">Ручное открытие календаря вверх</label>
+    <div class="cells">
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsMultiHandleVertical"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleHandleVertical"></oasis-calendar>
+    </div>
+  </div>
+
+  <br/>
+
+  <div>
+    <label class="modal-options">Радужный календарь</label>
+    <div>
+      <label>Цвет основной иконки</label>
+      <input type="color" value="#800080" (change)="calendarSettingsVisual.changeMainIconColor($event)"/>
+    </div>
+    <div>
+      <label>Цвет стрелочек</label>
+      <input type="color" value="#008000" (change)="calendarSettingsVisual.changeArrowsIconColor($event)"/>
+    </div>
+    <div>
+      <label>Основной цвет шрифта</label>
+      <input type="color" value="#ff0000" (change)="calendarSettingsVisual.changeDefaultFontColor($event)"/>
+    </div>
+    <div>
+      <label>Цвет шрифта выбранного элемента</label>
+      <input type="color" value="#0000ff" (change)="calendarSettingsVisual.changeDefaultSelectedFontColor($event)"/>
+    </div>
+    <div>
+      <label>Цвет фона выбранного элемента</label>
+      <input type="color" value="#ffc0cb" (change)="calendarSettingsVisual.changeDefaultSelectedBackgroundColor($event)"/>
+    </div>
+    <div>
+      <label>Цвет отключённых элементов</label>
+      <input type="color" value="#000000" (change)="calendarSettingsVisual.changeDefaultDisabledFontColor($event)"/>
+    </div>
+    <br/>
+    <div class="cells">
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsMultiRainbowCalendar"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsVisual.calendarSettingsSingleRainbowCalendar"></oasis-calendar>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Динамичная смена графика в календаре -->
+  <div>
+    <div>
+      <label class="modal-options">
+        Отключить календарь
+        <input [(ngModel)]="calendarSettingsDynamicChange.disabled" type="checkbox" (change)="calendarSettingsDynamicChange.setDisabled()">
+      </label>
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsDynamicChange.calendarSettingsMulti"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsDynamicChange.calendarSettingsSingle"></oasis-calendar>
+    </div>
+
+    <div class="modal-form">
+      <button
+        class="open-btn"
+        (click)="calendarSettingsDynamicChange.setGraph()"
+      >Установить график в календаре</button>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Ручное открытие календаря и "обертка" календаря -->
+  <div>
+    <div>
+      <label class="modal-options">
+        Закрытие календаря только через код
+      </label>
+
+      <div class="modal-form">
+        <button
+            class="open-btn"
+            (click)="calendarSettingsHandleChanged.setInvisibleCalendarFirst()">
+          Закрыть календари
+        </button>
+      </div>
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsHandleChanged.calendarSettingsMultiOnlyClose" [changeVisibleCalendar]="calendarSettingsHandleChanged.changeVisibleCalendarFirst"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsHandleChanged.calendarSettingsSingleOnlyClose" [changeVisibleCalendar]="calendarSettingsHandleChanged.changeVisibleCalendarFirst"></oasis-calendar>
+    </div>
+  </div>
+
+  <!-- Открытие и закрытие календаря через код -->
+  <div>
+    <div>
+      <label class="modal-options">
+        Открытие и закрытие календаря только через код
+      </label>
+
+      <div class="modal-form">
+        <button
+            class="open-btn"
+            [disabled]="calendarSettingsHandleChanged.isOpenCalendarSecond"
+            (click)="calendarSettingsHandleChanged.setVisibleCalendarSecond()">
+          Открыть календари
+        </button>
+
+        <button
+            class="open-btn"
+            [disabled]="!calendarSettingsHandleChanged.isOpenCalendarSecond"
+            (click)="calendarSettingsHandleChanged.setInvisibleCalendarSecond()">
+          Закрыть календари
+        </button>
+      </div>
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsHandleChanged.calendarSettingsMultiOpenClose" [changeVisibleCalendar]="calendarSettingsHandleChanged.changeVisibleCalendarSecond"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsHandleChanged.calendarSettingsSingleOpenClose" [changeVisibleCalendar]="calendarSettingsHandleChanged.changeVisibleCalendarSecond"></oasis-calendar>
+    </div>
+  </div>
+
+  <!-- Открытие календаря только через код -->
+  <div>
+    <div>
+      <label class="modal-options">
+        Открытие календаря только через код
+      </label>
+
+      <div class="modal-form">
+        <button
+            class="open-btn"
+            (click)="calendarSettingsHandleChanged.setVisibleCalendarThird()">
+          Открыть календари
+        </button>
+      </div>
+    </div>
+
+    <div class='calendar-block'>
+      <oasis-calendar [calendarSettings]="calendarSettingsHandleChanged.calendarSettingsMultiOnlyOpen" [changeVisibleCalendar]="calendarSettingsHandleChanged.changeVisibleCalendarThird"></oasis-calendar>
+      <oasis-calendar [calendarSettings]="calendarSettingsHandleChanged.calendarSettingsSingleOnlyOpen" [changeVisibleCalendar]="calendarSettingsHandleChanged.changeVisibleCalendarThird"></oasis-calendar>
+    </div>
+  </div>
+</div>

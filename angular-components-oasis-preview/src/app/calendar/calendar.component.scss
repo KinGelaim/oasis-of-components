@@ -1,0 +1,109 @@
+.calendar-block {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  width: 700px;
+}
+
+.calendar-info {
+  width: 275px;
+}
+
+.vertical-line {
+  height: 500px;
+  width: 2px;
+  background-color: black;
+}
+
+.select-dates {
+  width: 300px;
+  margin-left: 20px;
+}
+
+.modal-options {
+  display: block;
+  position: relative;
+  padding-left: 0px;
+  margin-bottom: 12px;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.modal-options input.input-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  right: 40%;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.modal-options:hover input ~ .checkmark:not(.disabled) {
+  background-color: #ccc;
+}
+
+.modal-options input:checked ~ .checkmark:not(.disabled) {
+  background-color: #2196f3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.modal-options input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.modal-options .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.open-btn {
+  margin-top: 20px;
+  margin-right: auto;
+  width: 260px;
+  height: 40px;
+  background: #fff;
+  border: #5479ab 1px solid;
+  cursor: pointer;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  color: #5479ab;
+
+  &:disabled {
+    cursor: auto;
+    color: lightgray;
+    border-color: lightgray;
+  }
+}
+
+.pt-20 {
+  padding-top: 20px;
+}
+
+.cells {
+  display: flex;
+  justify-content: space-between;
+}

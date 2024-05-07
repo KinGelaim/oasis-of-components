@@ -68,6 +68,39 @@
           }
         }
       }
+    },
+    "oasis-calendar": {
+      "projectType": "library",
+      "root": "projects/oasis-calendar",
+      "sourceRoot": "projects/oasis-calendar/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/oasis-calendar/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/oasis-calendar/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/oasis-calendar/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/oasis-calendar/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   }
 }
