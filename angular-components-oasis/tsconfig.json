@@ -17,6 +17,9 @@
       "oasis-button": [
         "./dist/oasis-button"
       ],
+      "oasis-button-expand": [
+        "./dist/oasis-button-expand"
+      ],
       "oasis-calendar": [
         "./dist/oasis-calendar"
       ],

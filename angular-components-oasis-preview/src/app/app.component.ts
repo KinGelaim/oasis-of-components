@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AllComponents, AngularComponent } from './angular-component.enum';
 import { TabsComponent } from './tabs/tabs.component';
 import { ButtonComponent } from './button/button.component';
+import { ButtonExpandComponent } from './button-expand/button-expand.component';
 import { CalendarComponent } from './calendar/calendar.component';
 
 @Component({
@@ -11,6 +12,7 @@ import { CalendarComponent } from './calendar/calendar.component';
   imports: [
     TabsComponent,
     ButtonComponent,
+    ButtonExpandComponent,
     CalendarComponent
   ],
   templateUrl: './app.component.html',

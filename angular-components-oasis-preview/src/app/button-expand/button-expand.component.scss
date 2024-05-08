@@ -1,0 +1,12 @@
+.buttons {
+  display: flex;
+  width: 300px;
+
+  &_reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.modal-form {
+  width: 500px;
+}

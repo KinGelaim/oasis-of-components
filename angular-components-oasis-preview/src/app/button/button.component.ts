@@ -36,10 +36,10 @@ export class ButtonComponent {
     this.buttonSettings.type = ButtonType.Main;
 
     // Задаем картинки и меняем статус, чтобы назначить картинку
-    this.buttonSettings.defaultIconUrl = './assets/test_assets/button/icon__add_white.png'
-    this.buttonSettings.hoverIconUrl = './assets/test_assets/button/icon__add_hover.png';
-    this.buttonSettings.clickIconUrl = './assets/test_assets/button/icon__add_click.png';
-    this.buttonSettings.disabledIconUrl = './assets/test_assets/button/icon__add_disabled.png';
+    this.buttonSettings.defaultIconUrl = './assets/test-assets/button/icon__add_white.png'
+    this.buttonSettings.hoverIconUrl = './assets/test-assets/button/icon__add_hover.png';
+    this.buttonSettings.clickIconUrl = './assets/test-assets/button/icon__add_click.png';
+    this.buttonSettings.disabledIconUrl = './assets/test-assets/button/icon__add_disabled.png';
     this.buttonSettings.state = ButtonState.Default;
   }
 
@@ -57,23 +57,23 @@ export class ButtonComponent {
     switch (event.target.value) {
       case ButtonType.Main:
         this.buttonSettings.textButton = "Кнопка"
-        this.buttonSettings.defaultIconUrl = './assets/test_assets/button/icon__add_white.png'
+        this.buttonSettings.defaultIconUrl = './assets/test-assets/button/icon__add_white.png'
         break;
 
       case ButtonType.MainTransparent:
       case ButtonType.WithoutBorder:
         this.buttonSettings.textButton = "Кнопка"
-        this.buttonSettings.defaultIconUrl = './assets/test_assets/button/icon__add_default.png'
+        this.buttonSettings.defaultIconUrl = './assets/test-assets/button/icon__add_default.png'
         break;
       
       case ButtonType.Link:
         this.buttonSettings.textButton = "Текст ссылки"
-        this.buttonSettings.defaultIconUrl = './assets/test_assets/button/icon__add_default.png'
+        this.buttonSettings.defaultIconUrl = './assets/test-assets/button/icon__add_default.png'
         break;
     }
 
-    this.buttonSettings.hoverIconUrl = './assets/test_assets/button/icon__add_hover.png';
-    this.buttonSettings.clickIconUrl = './assets/test_assets/button/icon__add_click.png';
-    this.buttonSettings.disabledIconUrl = './assets/test_assets/button/icon__add_disabled.png';
+    this.buttonSettings.hoverIconUrl = './assets/test-assets/button/icon__add_hover.png';
+    this.buttonSettings.clickIconUrl = './assets/test-assets/button/icon__add_click.png';
+    this.buttonSettings.disabledIconUrl = './assets/test-assets/button/icon__add_disabled.png';
   }
 }

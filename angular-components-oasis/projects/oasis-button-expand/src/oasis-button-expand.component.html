@@ -1,0 +1,32 @@
+<div
+    class="button
+            button_{{this.buttonExpandSettings.state}}
+            button_{{this.buttonExpandSettings.size}}"
+    [style.background-color]="this.buttonExpandSettings.state == ButtonExpandState.Disabled
+                              ? this.buttonExpandSettings.backgroundDisabledColor
+                              : this.buttonExpandSettings.backgroundDefaultColor"
+    [style.width]="this.widthButton"
+    (mouseover)="this.mouseOver($event)"
+    (mousedown)="this.mouseDown($event)"
+    (mouseup)="this.mouseUp($event)"
+    (mouseout)="this.mouseOut($event)"
+    (click)="this.clickButton($event)">
+  <!--Текст кнопки-->
+  <p
+      class="button__text"
+      [class.button__text-visible]="this.buttonExpandSettings.isExpand
+                                  && (this.buttonExpandSettings.state == ButtonExpandState.Hover
+                                    || this.buttonExpandSettings.state == ButtonExpandState.Click)">
+    {{this.buttonExpandSettings.textButton}}
+  </p>
+
+  <!--Картинка-->
+  <div
+    class="button__icon"
+    [style.background-image]="'url(' + (this.buttonExpandSettings.state == ButtonExpandState.Disabled
+                              ? this.buttonExpandSettings.disabledIconUrl
+                              : this.buttonExpandSettings.defaultIconUrl) + ')'"
+    [style.background-position]="'center'"
+    [style.background-repeat]="'no-repeat'">
+  </div>
+</div>

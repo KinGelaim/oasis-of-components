@@ -1,0 +1,145 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Может ли кнопка раздвигаться
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.buttonExpandSettings.isExpand"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Наименование кнопки
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.buttonExpandSettings.textButton"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер кнопки
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options button-size"
+              [(ngModel)]="this.buttonExpandSettings.size">
+            <option [value]="ButtonExpandSize.Small">Маленькая (S)</option>
+            <option [value]="ButtonExpandSize.Medium">Средняя (M)</option>
+            <option [value]="ButtonExpandSize.Large">Большая (L)</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Состояние
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.buttonExpandSettings.state">
+            <option [value]="ButtonExpandState.Default">Стандартное</option>
+            <option [value]="ButtonExpandState.Hover">Наведенное</option>
+            <option [value]="ButtonExpandState.Click">Нажатое</option>
+            <option [value]="ButtonExpandState.Disabled">Выключенное</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Стандартный цвет фона кнопки
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="this.buttonExpandSettings.backgroundDefaultColor"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина в наведенном состоянии
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.buttonExpandSettings.widthExpandButtonHover"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ед. измерения ширины<br/>
+            (проценты не работают<br/>при открытии влево)
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.buttonExpandSettings.widthUnit">
+            <option [value]="ButtonExpandUnit.None">Отсутствует</option>
+            <option [value]="ButtonExpandUnit.Pixel">Пиксели</option>
+            <option [value]="ButtonExpandUnit.Percent">Проценты</option>
+            <option [value]="ButtonExpandUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="ButtonExpandUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Открывать влево
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [checked]="this.isLeftChecked"
+            (change)="changeAlign()"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Открывать вправо
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [checked]="!this.isLeftChecked"
+            (change)="changeAlign()"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div
+      class="buttons"
+      [class.buttons_reverse]="this.isLeftChecked">
+    <oasis-button-expand
+      [buttonExpandSettings]="this.buttonExpandSettings"
+      (onClick)="buttonClick()">
+    </oasis-button-expand>
+  </div>
+</div>
