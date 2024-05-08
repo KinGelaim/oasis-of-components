@@ -23,6 +23,9 @@
       "oasis-calendar": [
         "./dist/oasis-calendar"
       ],
+      "oasis-check-box": [
+        "./dist/oasis-check-box"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]

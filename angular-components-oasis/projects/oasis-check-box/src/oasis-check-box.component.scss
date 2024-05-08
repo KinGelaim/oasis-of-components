@@ -1,0 +1,126 @@
+@use './../../shared/css/base/reset';
+
+.check-box {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  height: 20px;
+  cursor: pointer;
+  word-break: break-word;
+  color: #0e2648;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+
+  &_medium {
+    min-width: 20px;
+    height: 100%;
+    font-size: 14px;
+
+    &_left.check_box_with-padding {
+      padding-left: 28px;
+    }
+
+    &_right.check_box_with-padding {
+      padding-right: 28px;
+      padding-left: 0;
+    }
+  }
+
+  &_small {
+    min-width: 16px;
+    height: 100%;
+    font-size: 12px;
+
+    &_left.check_box_with-padding {
+      padding-left: 24px;
+    }
+
+    &_right.check_box_with-padding {
+      padding-right: 24px;
+      padding-left: 0;
+    }
+  }
+
+  &_disabled {
+    cursor: default;
+    color: #bdbdbd;
+  }
+
+  &:hover .check-mark_hover {
+    background-color: #e8f2ff;
+  }
+}
+
+.check-button {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.check-mark {
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background-color: #ffffff;
+
+  &_medium {
+    top: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+  }
+
+  &_small {
+    top: calc(50% - 8px);
+    width: 16px;
+    height: 16px;
+  }
+
+  &_left {
+    left: 0;
+  }
+
+  &_right {
+    right: 0;
+  }
+
+  &_normal {
+    border: 1px solid #5479ab;
+  }
+
+  &_error {
+    border: 2px solid #c51620;
+  }
+
+  &_disabled {
+    cursor: default;
+    border: 1px solid #bdbdbd;
+    background-color: #ebebeb;
+  }
+}
+
+/* Картинки */
+.check-button:checked~.check-mark_medium {
+
+  &.check-mark_normal,
+  &.check-mark_error {
+    background: #5479ab url(./../assets/check-mark_medium.svg) center no-repeat;
+  }
+
+  &.check-mark_disabled {
+    background: #ebebeb url(./../assets/check-mark_medium_disabled.svg) center no-repeat;
+  }
+}
+
+.check-button:checked~.check-mark_small {
+
+  &.check-mark_normal,
+  &.check-mark_error {
+    background: #5479ab url(./../assets/check-mark_small.svg) center no-repeat;
+  }
+
+  &.check-mark_disabled {
+    background: #ebebeb url(./../assets/check-mark_small_disabled.svg) center no-repeat;
+  }
+}

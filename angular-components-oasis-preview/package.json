@@ -22,6 +22,7 @@
     "@oasis/button": "file:dist/oasis-button",
     "@oasis/button-expand": "file:dist/oasis-button-expand",
     "@oasis/calendar": "file:dist/oasis-calendar",
+    "@oasis/check-box": "file:dist/oasis-check-box",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

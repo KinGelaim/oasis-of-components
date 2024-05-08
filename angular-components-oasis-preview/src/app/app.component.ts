@@ -5,6 +5,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { ButtonComponent } from './button/button.component';
 import { ButtonExpandComponent } from './button-expand/button-expand.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { CheckBoxComponent } from './check-box/check-box.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     TabsComponent,
     ButtonComponent,
     ButtonExpandComponent,
-    CalendarComponent
+    CalendarComponent,
+    CheckBoxComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

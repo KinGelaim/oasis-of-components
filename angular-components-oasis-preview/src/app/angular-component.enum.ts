@@ -9,12 +9,16 @@ export enum AngularComponent {
   ButtonExpand = 3,
 
   /** Календарь */
-  Calendar = 4
+  Calendar = 4,
+
+  /** Чекбокс */
+  CheckBox = 5
 }
 
 export const AllComponents = new Map<AngularComponent, string>([
   [AngularComponent.Tabs, "Вкладки"],
   [AngularComponent.Button, "Кнопка"],
   [AngularComponent.ButtonExpand, "Кнопка раздвигающаяся"],
-  [AngularComponent.Calendar, "Календарь"]
+  [AngularComponent.Calendar, "Календарь"],
+  [AngularComponent.CheckBox, "Чекбокс"]
 ]);

@@ -1,0 +1,24 @@
+<label
+    class="check-box
+          check-box_{{checkBoxSettings.size}}
+          check-box_{{checkBoxSettings.size}}_{{checkBoxSettings.position}}
+          check-box_{{checkBoxSettings.type}}"
+          [class.check_box_with-padding]="this.checkBoxSettings.isThereLabel">
+  <!--Текст элемента-->
+  {{checkBoxSettings.label}}
+
+  <input
+    class="check-button"
+    type="checkbox"
+    [(ngModel)]="this.checkBoxSettings.checkedState"
+    [disabled]="checkBoxSettings.type == CheckBoxType.Disabled" />
+
+  <!--Иконка для отображения чекбокса-->
+  <span
+    class="check-mark
+          check-mark_{{checkBoxSettings.size}}
+          check-mark_{{checkBoxSettings.position}}
+          check-mark_{{checkBoxSettings.type}}"
+    [class.check-mark_hover]="!checkBoxSettings.checkedState && checkBoxSettings.type != CheckBoxType.Disabled">
+  </span>
+</label>

@@ -1,0 +1,123 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер компонента
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.checkBoxSettingsFirst.size"
+              (change)="this.setSize()">
+            <option [value]="CheckBoxSize.Medium">Средний</option>
+            <option [value]="CheckBoxSize.Small">Маленький</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выравнивание чекбокса
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.checkBoxSettingsFirst.position"
+              (change)="this.setPosition()">
+            <option [value]="CheckBoxPosition.Left">С левой стороны</option>
+            <option [value]="CheckBoxPosition.Right">С правой стороны</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип чекбокса
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.checkBoxSettingsFirst.type"
+              (change)="this.setType()">
+            <option [value]="CheckBoxType.Normal">Нейтральный</option>
+            <option [value]="CheckBoxType.Error">Ошибка</option>
+            <option [value]="CheckBoxType.Disabled">Выключено</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Текст первого
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.checkBoxSettingsFirst.label"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Текст второго
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.checkBoxSettingsSecond.label"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Установка значения первого
+          </label>
+        </td>
+        <td>
+          <input
+            class="input-checkbox"
+            type="checkbox"
+            [(ngModel)]="this.checkBoxSettingsFirst.checkedState"/>
+          <span class="checkmark"></span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Установка значения второго
+          </label>
+        </td>
+        <td>
+          <input
+            class="input-checkbox"
+            type="checkbox"
+            [(ngModel)]="this.checkBoxSettingsSecond.checkedState"/>
+          <span class="checkmark"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="check-boxes">
+    <div class="check-box">
+      <oasis-check-box
+        [checkBoxSettings]="this.checkBoxSettingsFirst">
+      </oasis-check-box>
+    </div>
+
+    <div class="check-box">
+      <oasis-check-box
+        [checkBoxSettings]="this.checkBoxSettingsSecond">
+      </oasis-check-box>
+    </div>
+  </div>
+</div>
