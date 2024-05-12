@@ -1,0 +1,73 @@
+<div
+  class="digit-input"
+  [style.width]="this.digitInputSettings.widthComponentUnit != DigitInputUnit.None
+                ? this.digitInputSettings.widthComponent + this.digitInputSettings.widthComponentUnit
+                : 'auto'">
+  <!--Единственная кнопка слева-->
+  @if (!this.digitInputSettings.isReadOnly && this.digitInputSettings.visualType == DigitInputVisualType.ButtonsBothSide) {
+    <div
+      class="digit-input__left-button"
+      [class.digit-input__left-button_disabled]='this.digitInputSettings.isAchieveMinValue'
+      (click)="!this.digitInputSettings.isAchieveMinValue && this.offsetByStep(false)">
+    </div>
+  }
+
+  <!--Основное поле ввода данных-->
+  <div class="box">
+    <input
+      type="text"
+      class="digit-input__box
+              digit-input__box_{{this.digitInputSettings.size}}
+              digit-input__box_{{this.digitInputSettings.type}}"
+      [class.digit-input__box_text-center]='this.digitInputSettings.visualType != DigitInputVisualType.ButtonsRightSide'
+      [class.digit-input__box_table-cell]="this.digitInputSettings.visualType == DigitInputVisualType.TableCell"
+      [style.text-align]="this.digitInputSettings.textAlign"
+      [style.width]="this.digitInputSettings.widthInputUnit != DigitInputUnit.None
+                    ? this.digitInputSettings.widthInput + this.digitInputSettings.widthInputUnit
+                    : 'auto'"
+      [attr.placeholder]="this.digitInputSettings.visualType == DigitInputVisualType.TableCell
+                          ? this.digitInputSettings.placeholder
+                          : ''"
+      [readonly]='this.digitInputSettings.isReadOnly
+                  || this.digitInputSettings.type === DigitInputType.Disable && this.digitInputSettings.visualType == DigitInputVisualType.TableCell'
+      [value]="this.digitInputSettings.visibleValue"
+      (blur)="this.setInputBlur($event)"
+      (focus)="this.setInputFocus($event)"
+      (input)="this.setInputValue($event)"
+      (keypress)="this.setInputKeyPress($event)"
+      (keydown)="this.setInputKeyDown($event)"
+      (keyup)="this.setInputKeyUp($event)"/>
+
+    <!--Подсказка для валидации-->
+    @if (this.digitInputSettings.type == DigitInputType.Error) {
+      <!--
+      <oasis-hint-box
+        class="hint-box"
+        [hintBoxSettings]="this.digitInputSettings.hintBoxSettings"
+        [class.hint-box_table-cell]="this.digitInputSettings.visualType == DigitInputVisualType.TableCell">
+      </oasis-hint-box>
+      -->
+    }
+  </div>
+
+
+  <!--Возможные две кнопки справа-->
+  <div class="digit-input__right-buttons">
+    @if (!this.digitInputSettings.isReadOnly && this.digitInputSettings.visualType == DigitInputVisualType.ButtonsRightSide) {
+      <div
+        class="digit-input__right-button-minus"
+        [class.digit-input__right-button-minus_disabled]='this.digitInputSettings.isAchieveMinValue'
+        (click)="!this.digitInputSettings.isAchieveMinValue && this.offsetByStep(false)">
+      </div>
+    }
+    @if (!this.digitInputSettings.isReadOnly
+          && (this.digitInputSettings.visualType == DigitInputVisualType.ButtonsRightSide
+            || this.digitInputSettings.visualType == DigitInputVisualType.ButtonsBothSide)) {
+      <div
+        class="digit-input__right-button-plus"
+        [class.digit-input__right-button-plus_disabled]='this.digitInputSettings.isAchieveMaxValue'
+        (click)="!this.digitInputSettings.isAchieveMaxValue && this.offsetByStep(true)">
+      </div>
+    }
+  </div>
+</div>

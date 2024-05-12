@@ -24,6 +24,7 @@
     "@oasis/calendar": "file:dist/oasis-calendar",
     "@oasis/check-box": "file:dist/oasis-check-box",
     "@oasis/combo-box": "file:dist/oasis-combo-box",
+    "@oasis/digit-input": "file:dist/oasis-digit-input",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { EnumHelper } from './helpers/enum-helper.class';
@@ -17,7 +17,7 @@ import { ComboBoxUnit } from './shared/combo-box-unit.enum';
   templateUrl: 'oasis-combo-box.component.html',
   styleUrl: 'oasis-combo-box.component.scss'
 })
-export class OasisComboBoxComponent {
+export class OasisComboBoxComponent implements OnInit, OnDestroy {
   /** Входящие настройки для работы компонента */
   @Input()
   public comboBoxSettings!: ComboBoxSettings;

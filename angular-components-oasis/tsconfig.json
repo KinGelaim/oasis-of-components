@@ -29,6 +29,9 @@
       "oasis-combo-box": [
         "./dist/oasis-combo-box"
       ],
+      "oasis-digit-input": [
+        "./dist/oasis-digit-input"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]

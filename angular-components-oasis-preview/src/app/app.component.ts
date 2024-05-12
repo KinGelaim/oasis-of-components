@@ -7,6 +7,7 @@ import { ButtonExpandComponent } from './button-expand/button-expand.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CheckBoxComponent } from './check-box/check-box.component';
 import { ComboBoxComponent } from './combo-box/combo-box.component';
+import { DigitInputComponent } from './digit-input/digit-input.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ import { ComboBoxComponent } from './combo-box/combo-box.component';
     ButtonExpandComponent,
     CalendarComponent,
     CheckBoxComponent,
-    ComboBoxComponent
+    ComboBoxComponent,
+    DigitInputComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

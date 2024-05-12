@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CalendarSettings } from './shared/calendar-settings.model';
@@ -16,7 +16,7 @@ import { DateHelper } from './helpers/date-helper.class';
   templateUrl: 'oasis-calendar.component.html',
   styleUrl: 'oasis-calendar.component.scss'
 })
-export class OasisCalendarComponent {
+export class OasisCalendarComponent implements OnInit, OnDestroy {
   /** Ссылка на поле календаря */
   @ViewChild('calendarDatepicker')
   private calendarDatepicker!: ElementRef;

@@ -1,0 +1,321 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер текста
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.digitInputSettings.size">
+            @if (this.digitInputSettings.visualType != DigitInputVisualType.TableCell) {
+              <option [value]="DigitInputSize.Eighteen">
+                18 шрифт (без ячейки)
+              </option>
+            }
+            @if (this.digitInputSettings.visualType != DigitInputVisualType.TableCell) {
+              <option [value]="DigitInputSize.Sixteen">
+                16 шрифт
+              </option>
+            }
+            <option [value]="DigitInputSize.Fourteen">14 шрифт</option>
+            @if (this.digitInputSettings.visualType == DigitInputVisualType.TableCell) {
+              <option [value]="DigitInputSize.Twelve">
+                12 шрифт
+              </option>
+            }
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Только для чтения
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.digitInputSettings.isReadOnly"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип поля ввода
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.digitInputSettings.type">
+            <option [value]="DigitInputType.Normal">Нейтральное</option>
+            <option [value]="DigitInputType.Error">Ошибка</option>
+            <option [value]="DigitInputType.Warning">Предупреждение (только ячейка)</option>
+            <option [value]="DigitInputType.Disable">Выключение (только ячейка)</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Откат на валидное после blur
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.digitInputSettings.isReturnValidValue"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Визуальный тип
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.digitInputSettings.visualType">
+            <option [value]="DigitInputVisualType.ButtonsNotDisplay">Без кнопок</option>
+            <option [value]="DigitInputVisualType.ButtonsBothSide">Кнопки с двух сторон</option>
+            <option [value]="DigitInputVisualType.ButtonsRightSide">Кнопки справа</option>
+            <option [value]="DigitInputVisualType.TableCell">Вид ячейки таблицы</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Текст подсказки
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.digitInputSettings.placeholder"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина всего компонента
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.digitInputSettings.widthComponent"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.digitInputSettings.widthComponentUnit">
+            <option [value]="DigitInputUnit.None">Отсутствует</option>
+            <option [value]="DigitInputUnit.Pixel">Пиксели</option>
+            <option [value]="DigitInputUnit.Percent">Проценты</option>
+            <option [value]="DigitInputUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="DigitInputUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина поля ввода
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.digitInputSettings.widthInput"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.digitInputSettings.widthInputUnit">
+            <option [value]="DigitInputUnit.None">Отсутствует</option>
+            <option [value]="DigitInputUnit.Pixel">Пиксели</option>
+            <option [value]="DigitInputUnit.Percent">Проценты</option>
+            <option [value]="DigitInputUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="DigitInputUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Расположение текста
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.digitInputSettings.textAlign">
+            <option [value]="DigitInputTextAlign.Left">Слева</option>
+            <option [value]="DigitInputTextAlign.Center">По центру</option>
+            <option [value]="DigitInputTextAlign.Right">Справа</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип стандартного регулярного выражения
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.digitInputSettings.regularExpression">
+            <option [value]="DigitInputRegularExpression.Integer">Целое число</option>
+            <option [value]="DigitInputRegularExpression.FractionalToTenths">Дробное до десятых</option>
+            <option [value]="DigitInputRegularExpression.FractionalToHundredths">Дробное до сотых</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Значение поля ввода
+          </label>
+        </td>
+        <td>
+          <input
+            [value]="this.digitInputSettings.value"
+            (input)="setValue($event)"
+            (blur)="this.addZeroToValue($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Максимальное значение
+          </label>
+        </td>
+        <td>
+          <input
+            type="number"
+            [value]="this.digitInputSettings.maxValue"
+            (input)="this.setMaxValue($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Минимальное значение
+          </label>
+        </td>
+        <td>
+          <input
+            type="number"
+            [value]="this.digitInputSettings.minValue"
+            (input)="this.setMinValue($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Шаг для кнопки + и -
+          </label>
+        </td>
+        <td>
+          <input
+            type="number"
+            [value]="this.digitInputSettings.stepValue"
+            (input)="this.setStepValue($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Получаемое значение из компонента
+          </label>
+        </td>
+        <td>
+          <label class="modal-options">
+            {{this.currentValue}}
+          </label>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сбросить выбранное значение c emit</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetValue(true)">
+            Сброс
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сбросить выбранное значение без emit</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetValue(false)">
+            Сброс
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Последняя активная нажатая клавиша
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [(ngModel)]="this.lastActionKeyCode"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="input-fields">
+    <div class="input-field">
+      <oasis-digit-input
+        [digitInputSettings]="this.digitInputSettings"
+        (onValueChange)="this.getValue($event)"
+        (onKeyPress)="this.setLastActionKeyCode($event)"
+        (onKeyDown)="this.setLastActionKeyCode($event)"
+        (onKeyUp)="this.setLastActionKeyCode($event)">
+      </oasis-digit-input>
+    </div>
+  </div>
+</div>

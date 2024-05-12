@@ -15,7 +15,10 @@ export enum AngularComponent {
   CheckBox = 5,
 
   /** Комбобокс */
-  ComboBox = 6
+  ComboBox = 6,
+
+  /** Числовое поле */
+  DigitInput = 7
 }
 
 export const AllComponents = new Map<AngularComponent, string>([
@@ -24,5 +27,6 @@ export const AllComponents = new Map<AngularComponent, string>([
   [AngularComponent.ButtonExpand, "Кнопка раздвигающаяся"],
   [AngularComponent.Calendar, "Календарь"],
   [AngularComponent.CheckBox, "Чекбокс"],
-  [AngularComponent.ComboBox, "Комбобокс"]
+  [AngularComponent.ComboBox, "Комбобокс"],
+  [AngularComponent.DigitInput, "Числовое поле"]
 ]);

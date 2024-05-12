@@ -1,0 +1,15 @@
+.input-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:20px;
+}
+
+.modal-form {
+  width: 600px;
+}
