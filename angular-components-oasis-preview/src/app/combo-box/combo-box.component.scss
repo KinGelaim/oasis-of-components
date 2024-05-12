@@ -1,0 +1,25 @@
+.combo-boxes {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  margin-left: 700px;
+  ;
+}
+
+.modal-form {
+  width: 600px;
+}
+
+td {
+  width: auto;
+}
+
+.td-right {
+  width: 50%;
+  word-break: break-all;
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+}

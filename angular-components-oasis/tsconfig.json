@@ -26,6 +26,9 @@
       "oasis-check-box": [
         "./dist/oasis-check-box"
       ],
+      "oasis-combo-box": [
+        "./dist/oasis-combo-box"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]

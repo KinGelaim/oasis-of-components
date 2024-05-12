@@ -1,0 +1,511 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип поля
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.comboBoxSettingsFirst.itemsSettings[0].type"
+              (change)="this.setComboBoxType()">
+            <option [value]="ComboBoxType.Normal">Нейтральное</option>
+            <option [value]="ComboBoxType.Error">Ошибка</option>
+            <option [value]="ComboBoxType.Disabled">Выключение</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер списка комбобокса
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.comboBoxSettingsFirst.size"
+              (change)="setSize()">
+            <option [value]="ComboBoxSize.Medium">Средний</option>
+            <option [value]="ComboBoxSize.Small">Маленький</option>
+        </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Текст подсказки комбобокса
+          </label>
+        </td>
+        <td>
+          <input
+            [(ngModel)]="this.comboBoxSettingsFirst.placeholder"
+            (input)="setPlaceholder()"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина списка комбобокса
+          </label>
+        </td>
+        <td>
+          <input
+            [(ngModel)]="this.comboBoxSettingsFirst.width" 
+            (input)="setWidth()"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Расстояние по высоте между комбобоксами
+          </label>
+        </td>
+        <td>
+          <input
+            [(ngModel)]="marginBottomValue" 
+            (input)="changeMarginBottomValue(marginBottomValue)" />
+          <button
+              class="open-btn"
+              (click)="this.updateMarginBottom()">
+            Установить значение 0 или 600
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения комбобокса
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.comboBoxSettingsFirst.widthUnit"
+              (change)="setWidthUnit()">
+            <option [value]="ComboBoxUnit.None">Отсутствует</option>
+            <option [value]="ComboBoxUnit.Pixel">Пиксели</option>
+            <option [value]="ComboBoxUnit.Percent">Проценты</option>
+            <option [value]="ComboBoxUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="ComboBoxUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Режим работы с неверным значением
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.mainMode"
+              (change)="changeMainMode()">
+            <option [value]="ComboBoxResultProcessing.None">Не обрабатывать</option>
+            <option [value]="ComboBoxResultProcessing.HighlightingColor">Выделять цветом</option>
+            <option [value]="ComboBoxResultProcessing.ClearingValue">Стирать значение</option>
+            <option [value]="ComboBoxResultProcessing.ReplacementPrevious">Заменять на пред. значение</option>
+          </select>
+        </td>
+      </tr>
+
+      @if (this.mainMode == ComboBoxResultProcessing.ReplacementPrevious) {
+        <tr>
+          <td>
+            <label class="modal-options">
+              Доп. режим работы с неверным значением
+            </label>
+          </td>
+          <td>
+            <select
+                class="modal-options"
+                [(ngModel)]="this.additionalMode"
+                (change)="changeAdditionalMode()">
+              <option [value]="ComboBoxResultProcessing.None">Не обрабатывать</option>
+              <option [value]="ComboBoxResultProcessing.HighlightingColor">Выделять цветом компонент</option>
+              <option [value]="ComboBoxResultProcessing.ClearingValue">Стирать значение</option>
+            </select>
+          </td>
+        </tr>
+      }
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Режим работы с поиском
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.searchType"
+              (change)="changeSearchType()">
+            <option [value]="ComboBoxSearchType.Include">Включает в себя</option>
+            <option [value]="ComboBoxSearchType.SearchFromBeginning">Поиск с начала</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Добавить пустое значение для сброса, только для комбобокса без мультивыбора
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            (change)="changeEmptyValue($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Всегда отображать пустое значение, только для комбобокса без мультивыбора
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            (change)="changeVisibleEmptyValue($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Добавить элемент
+          </label>
+        </td>
+        <td>
+          <input
+            #inputValue
+            maxlength="50"/>
+          <button
+              class="open-btn"
+              (click)="addComboBoxItem(inputValue)">
+            Добавить
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Заблокировать 4 значение</p>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [ngModel]="this.comboBoxSettingsFirst.items[3].disabled"
+            (change)="this.setDisabledElementSettings(3, $event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выберите цвет фона для всех элементов
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="this.comboBoxSettingsFirst.backgroundColor"
+            (input)="this.setNewBackgroundColor()"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выберите цвет текста для всех элементов
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="this.comboBoxSettingsFirst.fontColor"
+            (input)="this.setNewFontColor()"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выберите цвет текста для 4 элемента
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="this.comboBoxItems[3].color"
+            (input)="this.setNewFontColorElement(3)" />
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Случайный цвет для списка
+          </label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="changeSingleColor()">
+            Изменить цвет
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Cбросить цвет для списка
+          </label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="clearSingleColor()">
+            Сбросить цвет
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Сделать жирным
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.comboBoxSettingsFirst.itemsSettings[0].isBold"
+            (change)="setBold()">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Спрятать или показать 11 значение
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="comboBoxItems[10].visible"
+            (change)="this.setVisibleElement(10)">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Разрешить повторный вызов элемента
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            (click)="changeRepeatEmit($event)">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Вводимое в компоненте 1
+          </label>
+        </td>
+        <td class="td-right">
+          {{this.currentInputValue}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое из компонента 1 значение
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [value]="viewValueFirst"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Вводимое в компоненте 2
+          </label>
+        </td>
+        <td class="td-right">
+          {{this.currentInputValueSecond}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое из компонента 2 значение
+          </label>
+        </td>
+        <td>
+          <textarea
+            disabled
+            [(ngModel)]="viewValueSecond"
+            rows="4">
+          </textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выбор случайного элемента
+          </label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="selectElements()">
+            Выбрать
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выбор элемента без обратной связи
+          </label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="selectElementWithoutEmit()">
+            Выбрать
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сброс элементов комбобокс, без emit</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetElements(true)">
+            Сброс элементов
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Сброс элементов комбобокс все, с emit
+          </label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetElementsWithEmit(true)">
+            Сброс элементов
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сброс элементов мультикомбобокс (все, кроме выключенных) без emit</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetElementsWithoutEmitAndDisabled(false)">
+            Сброс элементов
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сброс элементов мультикомбобокс (все, кроме выключенных) с emit</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetElementsWithEmitAndDisabled(false)">
+            Сброс элементов
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Автоматически определять положение выпадающего списка</p>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            (change)="this.isReverseDropdownList($event)" />
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Количество потерей фокуса:
+          </label>
+        </td>
+        <td>
+          {{this.blurCount}} |
+          {{this.blurCountSecond}}
+        </td>
+      </tr>
+
+    </table>
+  </div>
+
+  <div class="combo-boxes">
+    <div class="combo-box">
+      <oasis-combo-box
+        [comboBoxSettings]="this.comboBoxSettingsFirst"
+        [comboBoxItemSettings]="this.comboBoxSettingsFirst.itemsSettings[0]"
+        (onSelectedItemChange)="this.getClickItemsFirst($event)"
+        (onBlur)="this.blurComboBox()"
+        (onInputChange)="this.inputChange($event)">
+      </oasis-combo-box>
+    </div>
+
+    <div [style.marginBottom.px]="marginBottomValue"></div>
+
+    <div class="combo-box">
+      <oasis-combo-box
+        [comboBoxSettings]="this.comboBoxSettingsSecond"
+        [comboBoxItemSettings]="this.comboBoxSettingsSecond.itemsSettings[0]"
+        (onSelectedItemsChange)="getClickItemsSecond($event)"
+        (onBlur)="this.blurComboBoxSecond()"
+        (onInputChange)="this.inputChangeSecond($event)">
+      </oasis-combo-box>
+    </div>
+  </div>
+</div>

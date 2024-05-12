@@ -1,0 +1,100 @@
+<div
+    #comboBox
+    class="combo-box">
+  <div
+      class="combo-box-field combo-box-field_{{comboBoxSettings.size}}"
+      [class.combo-box-field_error]="this.comboBoxItemSettings.type == ComboBoxType.Error"
+      [class.combo-box-field_disabled]="this.comboBoxItemSettings.type == ComboBoxType.Disabled"
+      [class.combo-box-field_focus]="this.isOpenedComboBox"
+      [style.width]="this.comboBoxSettings.widthUnit != ComboBoxUnit.None
+        ? this.comboBoxSettings.width + this.comboBoxSettings.widthUnit
+        : 'auto'"
+      [style.backgroundColor]="this.comboBoxItemSettings.type != ComboBoxType.Disabled
+        ? this.comboBoxSettings.backgroundColor ?? this.comboBoxSettings.defaultBackgroundColor
+        : this.comboBoxSettings.disableBackgroundColor">
+    <!--Поле для ввода данных-->
+    <input
+      #comboBoxInput
+      class="combo-box-field__input combo-box-field__input_{{this.comboBoxSettings.size}}"
+      [class.combo-box-field__input_bold]="this.comboBoxItemSettings.isBold"
+      [style.backgroundColor]="this.comboBoxItemSettings.type != ComboBoxType.Disabled
+        ? this.comboBoxSettings.backgroundColor ?? this.comboBoxSettings.defaultBackgroundColor
+        : this.comboBoxSettings.disableBackgroundColor"
+      [style.color]="this.selectedFontColor"
+      [placeholder]="this.selectedItemsPlaceholder == '' ? this.comboBoxSettings.placeholder : this.selectedItemsPlaceholder"
+      [disabled]="this.comboBoxItemSettings.type == ComboBoxType.Disabled"
+      [value]="this.inputFieldValue"
+      (input)="this.filterItems($event)"
+      (keyup)="this.onKeyUpInput($event)"
+      (keydown)="this.onKeyDownInput($event)"
+      (click)="this.switchingComboBox()"
+      (blur)="blurInputWithTimeout($event)">
+
+    <!--Картинка с треугольником-->
+    <div
+        class="combo-box-field__image combo-box-field__image_{{this.comboBoxSettings.size}}"
+        (click)="this.switchingComboBoxClickImage()">
+      <div
+        class="combo-box-field__image-svg"
+        [class.combo-box-field__image-svg_disabled]="this.comboBoxItemSettings.type == ComboBoxType.Disabled"
+        [class.combo-box-field__image-svg_rotated]="this.isOpenedComboBox">
+      </div>
+    </div>
+  </div>
+
+  <!--Выпадающий список с данными-->
+  <div
+      #comboBoxList
+      class="combo-box-list combo-box-list_{{this.comboBoxSettings.size}}"
+      [class.combo-box-list_not-visible]="!this.isOpenedComboBox"
+      [class.combo-box-list_position]="this.isReverseList"
+      [style.width]="this.comboBoxSettings.widthUnit != ComboBoxUnit.None
+                      ? this.comboBoxSettings.width + this.comboBoxSettings.widthUnit
+                      : 'auto'">
+    <!--Сами элементы-->
+    @for (item of this.filteredItems; track $index) {
+      <div
+          #comboBoxListItems
+          tabindex="0"
+          class="combo-box-list__item combo-box-list__item_{{this.comboBoxSettings.size}}"
+          [class.drop-down-list__item_checked]="checkInclude(item)"
+          [class.drop-down-list__item_multi]="comboBoxSettings.isMultiSelectable"
+          [style.backgroundColor]="this.comboBoxItemSettings.selectedItems[0] == item && !this.comboBoxSettings.isMultiSelectable
+            ? this.comboBoxSettings.selectedBackgroundColorItem
+            : item.backgroundColor"
+          [style.color]="item.color ?? this.comboBoxItemSettings.fontColor ?? this.comboBoxSettings.fontColor ?? this.comboBoxSettings.defaultFontColor"
+          (click)="this.choiceSelectedItem(item, true)"
+          (mouseenter)="this.changeColorMouse(item, false, $event)"
+          (mouseleave)="this.changeColorMouse(item, true, $event)">
+
+        <!--Картинка при множественном выборе-->
+        @if (comboBoxSettings.isMultiSelectable) {
+          <div
+            class="combo-box-list__item-image combo-box-list__item-image_{{comboBoxSettings.size}}"
+            [class.combo-box-list__item-image_checked]="checkInclude(item)"
+            [class.combo-box-list__item-image_disabled]="item.disabled">
+          </div>
+        }
+
+        <!--Текст списка-->
+        <p
+            class="combo-box-list__item-text combo-box-list__item-text_{{this.comboBoxSettings.size}}"
+            [style.color]="item.color && item.disabled
+              ? this.comboBoxSettings.disableFontColorItem
+              : (item.color ? this.comboBoxItemSettings.fontColor : this.comboBoxSettings.fontColor)">
+          {{item.display}}
+        </p>
+      </div>
+    }
+
+    <!--Элемент с пустым значением-->
+    @if (isFilterListEmpty) {
+      <div
+          class="combo-box-list__item combo-box-list__item_empty combo-box-list__item_{{this.comboBoxSettings.size}}">
+        <p class="combo-box-list__item-text combo-box-list__item-text_{{this.comboBoxSettings.size}}">
+          Не найдено
+        </p>
+      </div>
+    }
+  </div>
+</div>
