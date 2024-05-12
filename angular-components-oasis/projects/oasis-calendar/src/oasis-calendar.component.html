@@ -21,39 +21,46 @@
                             : ''
       }">
     <!--Текст в основном поле календаря-->
-    <div
-        *ngIf="!this.calendarSettings.onlyIcon"
-        class="calendar-datepicker__all-text">
-      <!--Дата в календаре или первая дата, если календарь с множественным выбором-->
+    @if (!this.calendarSettings.onlyIcon) {
       <div
-          class="calendar-datepicker__text calendar-datepicker__text_{{this.calendarSettings.calendarSize}}"
-          [class.calendar-datepicker__text_disabled]="this.calendarSettings.isDisabled"
-          [class.calendar-datepicker__start-date-text]="this.calendarSettings.multiSelectable"
-          [style.color]="this.calendarSettings.isDisabled ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.defaultFontColor">
-        <span *ngIf="!this.calendarSettings.multiSelectable">
-          {{this.calendarService?.selectedDate == null ? '' : this.calendarService?.selectedDate | date:'dd.MM.yyyy'}}
-        </span>
-        <span *ngIf="calendarSettings.multiSelectable">
-          {{this.calendarService?.selectedFirstDate == null ? '' : this.calendarService?.selectedFirstDate | date:'dd.MM.yyyy'}}
-        </span>
-      </div>
+          class="calendar-datepicker__all-text">
+        <!--Дата в календаре или первая дата, если календарь с множественным выбором-->
+        <div
+            class="calendar-datepicker__text calendar-datepicker__text_{{this.calendarSettings.calendarSize}}"
+            [class.calendar-datepicker__text_disabled]="this.calendarSettings.isDisabled"
+            [class.calendar-datepicker__start-date-text]="this.calendarSettings.multiSelectable"
+            [style.color]="this.calendarSettings.isDisabled ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.defaultFontColor">
+          @if (!this.calendarSettings.multiSelectable) {
+            <span>
+              {{this.calendarService?.selectedDate == null ? '' : this.calendarService?.selectedDate | date:'dd.MM.yyyy'}}
+            </span>
+          }
+          @if (calendarSettings.multiSelectable) {
+            <span>
+              {{this.calendarService?.selectedFirstDate == null ? '' : this.calendarService?.selectedFirstDate | date:'dd.MM.yyyy'}}
+            </span>
+          }
+        </div>
 
-      <!--Прочерк между датами в двойном календаре-->
-      <div
-        *ngIf="this.calendarSettings.multiSelectable && this.calendarService?.selectedFirstDate != null"
-        class="calendar-datepicker__dash"
-        [style.background]="this.calendarSettings.isDisabled ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.defaultFontColor">
-      </div>
+        <!--Прочерк между датами в двойном календаре-->
+        @if (this.calendarSettings.multiSelectable && this.calendarService?.selectedFirstDate != null) {
+          <div
+            class="calendar-datepicker__dash"
+            [style.background]="this.calendarSettings.isDisabled ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.defaultFontColor">
+          </div>
+        }
 
-      <!--Вторая дата, если календарь со множественным выбором-->
-      <div
-          *ngIf="this.calendarSettings.multiSelectable && this.calendarService?.selectedSecondDate != null"
-          class="calendar-datepicker__text calendar-datepicker__text_{{this.calendarSettings.calendarSize}} calendar-datepicker__end-date-text"
-          [class.calendar-datepicker__text_disabled]="this.calendarSettings.isDisabled"
-          [style.color]="this.calendarSettings.isDisabled ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.defaultFontColor">
-        <span>{{this.calendarService?.selectedSecondDate | date:'dd.MM.yyyy'}}</span>
+        <!--Вторая дата, если календарь со множественным выбором-->
+        @if (this.calendarSettings.multiSelectable && this.calendarService?.selectedSecondDate != null) {
+          <div
+              class="calendar-datepicker__text calendar-datepicker__text_{{this.calendarSettings.calendarSize}} calendar-datepicker__end-date-text"
+              [class.calendar-datepicker__text_disabled]="this.calendarSettings.isDisabled"
+              [style.color]="this.calendarSettings.isDisabled ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.defaultFontColor">
+            <span>{{this.calendarService?.selectedSecondDate | date:'dd.MM.yyyy'}}</span>
+          </div>
+        }
       </div>
-    </div>
+    }
 
     <!--Иконка календаря-->
     <div
@@ -77,170 +84,174 @@
       [class.calendar-modal_open-horizontal-reverse]="this.calendarSettings.isNeedHorizontalReverse"
       [class.calendar-modal_open-vertical-reverse]="this.isVerticalReverseModal">
     <!-- Отображение календаря в виде таблицы дней -->
-    <div *ngIf="this.periodTypeShown == this.PeriodType.Day">
-      <div class="calendar-modal__header header-days">
-        <!--Год-->
-        <div
-            class="header-days__year"
-            [style.color]="this.calendarSettings.defaultFontColor"
-            (click)="changePeriodType(this.PeriodType.Year)">
-          <span>{{this.calendarService?.viewDate | date:'yyyy'}}</span>
-        </div>
-
-        <!--Месяц-->
-        <div
-            class="header-days__month"
-            [style.color]="this.calendarSettings.defaultFontColor"
-            (click)="changePeriodType(this.PeriodType.Month)">
-          <span class="header-days__month-text">{{this.calendarService?.viewDate | date:'MMMM'}}</span>
-        </div>
-
-        <!--Стрелки переключения-->
-        <div class="calendar-modal__arrows-days arrows">
+    @if (this.periodTypeShown == this.PeriodType.Day) {
+      <div>
+        <div class="calendar-modal__header header-days">
+          <!--Год-->
           <div
-              class="arrows__left"
-              [class.arrows__left_disabled]="this.isDisabledUpArrow"
-              (click)="switchMonths(-this.MONTH_STEP)">
+              class="header-days__year"
+              [style.color]="this.calendarSettings.defaultFontColor"
+              (click)="changePeriodType(this.PeriodType.Year)">
+            <span>{{this.calendarService?.viewDate | date:'yyyy'}}</span>
+          </div>
+  
+          <!--Месяц-->
+          <div
+              class="header-days__month"
+              [style.color]="this.calendarSettings.defaultFontColor"
+              (click)="changePeriodType(this.PeriodType.Month)">
+            <span class="header-days__month-text">{{this.calendarService?.viewDate | date:'MMMM'}}</span>
+          </div>
+  
+          <!--Стрелки переключения-->
+          <div class="calendar-modal__arrows-days arrows">
             <div
-              class="arrows__left-mask"
-              [class.arrows__left-mask_disabled]="this.isDisabledUpArrow"
+                class="arrows__left"
+                [class.arrows__left_disabled]="this.isDisabledUpArrow"
+                (click)="switchMonths(-this.MONTH_STEP)">
+              <div
+                class="arrows__left-mask"
+                [class.arrows__left-mask_disabled]="this.isDisabledUpArrow"
+                [style.background]="this.isDisabledUpArrow ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.arrowsIconColor">
+              </div>
+            </div>
+            <div
+                class="arrows__right"
+                [class.arrows__right_disabled]="this.isDisabledDownArrow"
+                (click)="switchMonths(this.MONTH_STEP)">
+              <div
+                class="arrows__right-mask"
+                [class.arrows__right-mask_disabled]="this.isDisabledDownArrow"
+                [style.background]="this.isDisabledDownArrow ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.arrowsIconColor">
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!--Сама таблица дней-->
+        <div class="calendar-modal__body-days">
+          @for (week of this.calendarTableGeneratorService?.days; track $index) {
+            <div class="calendar-modal__row calendar-modal__row-days">
+              @for (day of week.dates; track $index) {
+                <div
+                    class="calendar-modal__cell"
+                    [class.calendar-modal__cell_selected]="day.isSelected"
+                    [class.calendar-modal__cell_disabled]="day.isDisabled"
+                    [class.calendar-modal__cell_hover-multi]="day.isHoveredMulti"
+                    (mouseover)="hoverMulti(day.value)">
+                  <div
+                      class="calendar-modal__cell-text calendar-modal__cell-text-day"
+                      [style.color]="day.isSelected ? day.selectedColorTextDay : day.colorTextDay"
+                      [style.background]="
+                        day.isSelected && day.selectedBackgroundColorTextDay != null
+                          ? day.selectedBackgroundColorTextDay
+                          : (day.backgroundColorTextDay != null ? day.backgroundColorTextDay : '')"
+                      (click)="!day.isDisabled && this.selectDayWithEmit(day.value)">
+                    <span>{{day.value | date:'d'}}</span>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+  
+        <!--Кнопка "Сегодня"-->
+        <div class="calendar-modal__footer">
+          <div
+              class="calendar-modal__today-btn"
+              [style.color]="this.calendarSettings.defaultFontColor"
+              (click)="selectToday()">
+            <span>Сегодня</span>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!--Отображение календаря в виде таблицы месяцев-->
+    @if (this.periodTypeShown == this.PeriodType.Month) {
+      <div class="calendar-modal__body-months">
+        <div class="calendar-modal__months">
+          @for (monthRow of this.calendarTableGeneratorService?.months; track $index) {
+            <div class="calendar-modal__row calendar-modal__row-months">
+              @for (month of monthRow.dates; track $index) {
+                <div
+                    class="calendar-modal__cell calendar-modal__cell-text calendar-modal__cell-text-month"
+                    [style.color]="month.isSelected
+                                  ? this.calendarSettings.defaultSelectedFontColor
+                                  : month.isDisabled
+                                    ? this.calendarSettings.defaultDisabledFontColor
+                                    : this.calendarSettings.defaultFontColor"
+                    [style.background]="month.isSelected ? this.calendarSettings.defaultSelectedBackgroundColorItem : ''"
+                    [class.calendar-modal__cell_selected]="month.isSelected"
+                    [class.calendar-modal__cell_disabled]="month.isDisabled"
+                    (click)="!month.isDisabled && selectMonth(month.value)">
+                  <span>{{month.value | date:'MMMM'}}</span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!--Отображение календаря в виде таблицы годов-->
+    @if (this.periodTypeShown == this.PeriodType.Year) {
+      <div class="calendar-modal__body-years">
+        <!--Стрелка вверх-->
+        <div class="calendar-modal__arrows-years arrows">
+          <div
+              class="arrows__up"
+              [class.arrows__up_disabled]="this.isDisabledUpArrow"
+              (click)="switchYears(-this.YEAR_STEP)">
+            <div
+              class="arrows__up-mask"
+              [class.arrows__up-mask_disabled]="this.isDisabledUpArrow"
               [style.background]="this.isDisabledUpArrow ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.arrowsIconColor">
             </div>
           </div>
-          <div
-              class="arrows__right"
-              [class.arrows__right_disabled]="this.isDisabledDownArrow"
-              (click)="switchMonths(this.MONTH_STEP)">
-            <div
-              class="arrows__right-mask"
-              [class.arrows__right-mask_disabled]="this.isDisabledDownArrow"
-              [style.background]="this.isDisabledDownArrow ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.arrowsIconColor">
+        </div>
+  
+        <!--Сама таблица годов-->
+        <div class="calendar-modal__years">
+          @for (yearRow of this.calendarTableGeneratorService?.years; track $index) {
+            <div class="calendar-modal__row calendar-modal__row-years">
+              @for (year of yearRow.dates; track $index) {
+                <div
+                    class="calendar-modal__cell calendar-modal__cell-text calendar-modal__cell-text-year"
+                    [style.color]="year.isSelected
+                                  ? this.calendarSettings.defaultSelectedFontColor
+                                  : year.isDisabled
+                                    ? this.calendarSettings.defaultDisabledFontColor
+                                    : this.calendarSettings.defaultFontColor"
+                    [style.background]="year.isSelected ? this.calendarSettings.defaultSelectedBackgroundColorItem : ''"
+                    [class.calendar-modal__cell_selected]="year.isSelected"
+                    [class.calendar-modal__cell_disabled]="year.isDisabled"
+                    (click)="!year.isDisabled && selectYear(year.value)">
+                  <span>{{year.value | date:'yyyy'}}</span>
+                </div>
+              }
             </div>
-          </div>
+          }
         </div>
-      </div>
-
-      <!--Сама таблица дней-->
-      <div class="calendar-modal__body-days">
-        <div
-            *ngFor="let week of this.calendarTableGeneratorService?.days"
-            class="calendar-modal__row calendar-modal__row-days">
+  
+        <!--Стрелка вниз-->
+        <div class="calendar-modal__arrows-years arrows">
           <div
-              *ngFor="let day of week.dates"
-              class="calendar-modal__cell"
-              [class.calendar-modal__cell_selected]="day.isSelected"
-              [class.calendar-modal__cell_disabled]="day.isDisabled"
-              [class.calendar-modal__cell_hover-multi]="day.isHoveredMulti"
-              (mouseover)="hoverMulti(day.value)">
-            <div
-                class="calendar-modal__cell-text calendar-modal__cell-text-day"
-                [style.color]="day.isSelected ? day.selectedColorTextDay : day.colorTextDay"
-                [style.background]="
-                  day.isSelected && day.selectedBackgroundColorTextDay != null
-                    ? day.selectedBackgroundColorTextDay
-                    : (day.backgroundColorTextDay != null ? day.backgroundColorTextDay : '')"
-                (click)="!day.isDisabled && this.selectDayWithEmit(day.value)">
-              <span>{{day.value | date:'d'}}</span>
-            </div>
+              class="arrows__down"
+              [class.arrows__down_disabled]="this.isDisabledDownArrow"
+              (click)="switchYears(this.YEAR_STEP)">
+            <img
+              class="arrows__down-mask"
+              [class.arrows__down-mask_disabled]="this.isDisabledDownArrow"
+              [style.background]="this.isDisabledDownArrow ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.arrowsIconColor"/>
           </div>
         </div>
       </div>
-
-      <!--Кнопка "Сегодня"-->
-      <div class="calendar-modal__footer">
-        <div
-            class="calendar-modal__today-btn"
-            [style.color]="this.calendarSettings.defaultFontColor"
-            (click)="selectToday()">
-          <span>Сегодня</span>
-        </div>
-      </div>
-    </div>
-
-    <!--Отображение календаря в виде таблицы месяцев-->
-    <div
-        *ngIf="this.periodTypeShown == this.PeriodType.Month"
-        class="calendar-modal__body-months">
-      <div class="calendar-modal__months">
-        <div
-            *ngFor="let monthRow of this.calendarTableGeneratorService?.months"
-            class="calendar-modal__row calendar-modal__row-months">
-          <div
-              *ngFor="let month of monthRow.dates"
-              class="calendar-modal__cell calendar-modal__cell-text calendar-modal__cell-text-month"
-              [style.color]="month.isSelected
-                            ? this.calendarSettings.defaultSelectedFontColor
-                            : month.isDisabled
-                              ? this.calendarSettings.defaultDisabledFontColor
-                              : this.calendarSettings.defaultFontColor"
-              [style.background]="month.isSelected ? this.calendarSettings.defaultSelectedBackgroundColorItem : ''"
-              [class.calendar-modal__cell_selected]="month.isSelected"
-              [class.calendar-modal__cell_disabled]="month.isDisabled"
-              (click)="!month.isDisabled && selectMonth(month.value)">
-            <span>{{month.value | date:'MMMM'}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--Отображение календаря в виде таблицы годов-->
-    <div
-        *ngIf="this.periodTypeShown == this.PeriodType.Year"
-        class="calendar-modal__body-years">
-      <!--Стрелка вверх-->
-      <div class="calendar-modal__arrows-years arrows">
-        <div
-            class="arrows__up"
-            [class.arrows__up_disabled]="this.isDisabledUpArrow"
-            (click)="switchYears(-this.YEAR_STEP)">
-          <div
-            class="arrows__up-mask"
-            [class.arrows__up-mask_disabled]="this.isDisabledUpArrow"
-            [style.background]="this.isDisabledUpArrow ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.arrowsIconColor">
-          </div>
-        </div>
-      </div>
-
-      <!--Сама таблица годов-->
-      <div class="calendar-modal__years">
-        <div
-            *ngFor="let yearRow of this.calendarTableGeneratorService?.years"
-            class="calendar-modal__row calendar-modal__row-years">
-          <div
-              *ngFor="let year of yearRow.dates"
-              class="calendar-modal__cell calendar-modal__cell-text calendar-modal__cell-text-year"
-              [style.color]="year.isSelected
-                            ? this.calendarSettings.defaultSelectedFontColor
-                            : year.isDisabled
-                              ? this.calendarSettings.defaultDisabledFontColor
-                              : this.calendarSettings.defaultFontColor"
-              [style.background]="year.isSelected ? this.calendarSettings.defaultSelectedBackgroundColorItem : ''"
-              [class.calendar-modal__cell_selected]="year.isSelected"
-              [class.calendar-modal__cell_disabled]="year.isDisabled"
-              (click)="!year.isDisabled && selectYear(year.value)">
-            <span>{{year.value | date:'yyyy'}}</span>
-          </div>
-        </div>
-      </div>
-
-      <!--Стрелка вниз-->
-      <div class="calendar-modal__arrows-years arrows">
-        <div
-            class="arrows__down"
-            [class.arrows__down_disabled]="this.isDisabledDownArrow"
-            (click)="switchYears(this.YEAR_STEP)">
-          <img
-            class="arrows__down-mask"
-            [class.arrows__down-mask_disabled]="this.isDisabledDownArrow"
-            [style.background]="this.isDisabledDownArrow ? this.calendarSettings.defaultDisabledFontColor : this.calendarSettings.arrowsIconColor"/>
-        </div>
-      </div>
-    </div>
+    }
   </div>
 </div>
 
 <!-- Область всего экрана, чтобы не вызывать действия на странице при клике вне календаря -->
-<div
-  *ngIf="this.closableCoverActive"
-  class="closable-cover">
-</div>
+@if (this.closableCoverActive) {
+  <div class="closable-cover"></div>
+}
