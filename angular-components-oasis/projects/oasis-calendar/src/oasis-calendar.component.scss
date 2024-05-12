@@ -357,7 +357,7 @@
   &__up-mask {
     width: 18px;
     height: 10px;
-    mask-image: url(./../assets/oasis-library/calendar/arrow-up.png);
+    mask-image: url(./../assets/arrow-up.svg);
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: 18px 10px;
@@ -367,7 +367,7 @@
   &__up {
     &:hover &-mask {
       &:not(.arrows__left-mask_disabled):not(.arrows__up-mask_disabled) {
-        mask-image: url(./../assets/oasis-library/calendar/arrow-up_hover.png);
+        mask-image: url(./../assets/arrow-up_hover.svg);
       }
     }
   }
@@ -376,7 +376,7 @@
   &__down-mask {
     width: 18px;
     height: 10px;
-    mask-image: url(./../assets/oasis-library/calendar/arrow-down.png);
+    mask-image: url(./../assets/arrow-down.svg);
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: 18px 10px;
@@ -386,7 +386,7 @@
   &__down {
     &:hover &-mask {
       &:not(.arrows__right-mask_disabled):not(.arrows__down-mask_disabled) {
-        mask-image: url(./../assets/oasis-library/calendar/arrow-down_hover.png);
+        mask-image: url(./../assets/arrow-down_hover.svg);
       }
     }
   }
