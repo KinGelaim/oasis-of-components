@@ -35,6 +35,9 @@
       "oasis-drop-down-list": [
         "./dist/oasis-drop-down-list"
       ],
+      "oasis-hint-box": [
+        "./dist/oasis-hint-box"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]

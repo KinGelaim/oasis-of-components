@@ -9,6 +9,7 @@ import { CheckBoxComponent } from './check-box/check-box.component';
 import { ComboBoxComponent } from './combo-box/combo-box.component';
 import { DigitInputComponent } from './digit-input/digit-input.component';
 import { DropDownListComponent } from './drop-down-list/drop-down-list.component';
+import { HintBoxComponent } from './hint-box/hint-box.component';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ import { DropDownListComponent } from './drop-down-list/drop-down-list.component
     ComboBoxComponent,
     DigitInputComponent,
     DropDownListComponent,
+    HintBoxComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

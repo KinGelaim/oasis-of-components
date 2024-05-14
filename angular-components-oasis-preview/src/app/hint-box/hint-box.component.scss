@@ -1,0 +1,10 @@
+.modal-form {
+  width: 500px;
+}
+
+:host ::ng-deep {
+  .hint-box__color-blue {
+    color: #1669a1;
+    font-weight: 500;
+  }
+}

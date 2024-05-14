@@ -1,0 +1,25 @@
+<div
+    class="hint-box
+            hint-box_{{this.hintBoxSettings.color}}
+            text-alignment_{{this.hintBoxSettings.textAlignment}}"
+    [ngStyle]="{
+      'max-width': this.hintBoxSettings.maxWidthUnit != HintBoxUnit.None
+                    ? this.hintBoxSettings.maxWidth + this.hintBoxSettings.maxWidthUnit
+                    :'max-content',
+      'min-width': this.hintBoxSettings.minWidthUnit != HintBoxUnit.None
+                    ? this.hintBoxSettings.minWidth + this.hintBoxSettings.minWidthUnit
+                    : 'auto'
+    }">
+  <!--Текст подсказки-->
+  <p
+    class="hint-box__text"
+    [innerHTML]="this.hintBoxSettings.text">
+  </p>
+
+  <!--Треугольник-->
+  <div
+    class="hint-box__triangle
+          triangle-position_{{this.hintBoxSettings.trianglePlace}}
+          triangle-color_{{this.hintBoxSettings.color}}">
+  </div>
+</div>

@@ -22,6 +22,9 @@ export enum AngularComponent {
 
   /** Выпадающий список */
   DropDownList = 8,
+
+  /** Всплывающая подсказка */
+  HintBox = 9
 }
 
 export const AllComponents = new Map<AngularComponent, string>([
@@ -33,4 +36,5 @@ export const AllComponents = new Map<AngularComponent, string>([
   [AngularComponent.ComboBox, "Комбобокс"],
   [AngularComponent.DigitInput, "Числовое поле"],
   [AngularComponent.DropDownList, "Выпадающий список"],
+  [AngularComponent.HintBox, "Всплывающая подсказка"]
 ]);

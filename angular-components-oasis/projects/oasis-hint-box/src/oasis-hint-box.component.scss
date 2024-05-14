@@ -1,0 +1,114 @@
+@use "./../../shared/css/base/reset";
+
+.hint-box {
+  position: relative;
+  display: inline-block;
+  min-width: 70px;
+  min-height: 36px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+  &_light {
+    color: #0e2648;
+    background: #ffffff;
+  }
+
+  &_dark {
+    color: #ffffff;
+    background: #0e2648;
+  }
+
+  &__text {
+    display: inline-block;
+    padding: 8px;
+    white-space: pre-wrap;
+    letter-spacing: 0.04em;
+    font-family: 'Roboto';
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 20px;
+    overflow-wrap: anywhere;
+  }
+
+  &__triangle {
+    position: absolute;
+    width: 10px;
+    height: 6px;
+  }
+}
+
+.triangle-color {
+  &_light {
+    background: url(./../assets/triangle_light.svg);
+  }
+
+  &_dark {
+    background: url(./../assets/triangle_dark.svg);
+  }
+}
+
+.triangle-position {
+  &_bottom {
+    bottom: -5px;
+    left: calc(50% - 5px);
+  }
+
+  &_top {
+    top: -5px;
+    left: calc(50% - 5px);
+    transform: rotate(180deg);
+  }
+
+  &_left {
+    top: calc(50% - 3px);
+    left: -7px;
+    transform: rotate(90deg);
+  }
+
+  &_right {
+    top: calc(50% - 3px);
+    right: -7px;
+    transform: rotate(270deg);
+  }
+
+  &_bottom-left {
+    bottom: -5px;
+    left: 12px;
+  }
+
+  &_top-left {
+    top: -5px;
+    transform: rotate(180deg);
+    left: 12px;
+  }
+  
+  &_bottom-right {
+    bottom: -5px;
+    right: 12px;
+  }
+  
+  &_top-right {
+    top: -5px;
+    right: 12px;
+    transform: rotate(180deg);
+  }
+
+  &_hidden {
+    display: none;
+  }
+}
+
+.text-alignment {
+  &_left {
+    text-align: left;
+  }
+
+  &_center {
+    text-align: center;
+  }
+
+  &_right {
+    text-align: right;
+  }
+}

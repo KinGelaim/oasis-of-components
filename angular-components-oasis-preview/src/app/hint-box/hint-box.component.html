@@ -1,0 +1,151 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Текст
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="hintBoxSettings.text"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тестовые данные
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="hintBoxSettings.text">
+            <option [value]="lineBreak">Разные цвета и строки</option>
+            <option [value]="table">Таблица</option>
+            <option [value]="image">Изображение</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Расположение треугольника
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="hintBoxSettings.trianglePlace">
+            <option [value]="HintBoxTrianglePlace.Hidden">Отсутствует</option>
+            <option [value]="HintBoxTrianglePlace.Top">Сверху</option>
+            <option [value]="HintBoxTrianglePlace.Bottom">Снизу</option>
+            <option [value]="HintBoxTrianglePlace.Left">Слева</option>
+            <option [value]="HintBoxTrianglePlace.Right">Справа</option>
+            <option [value]="HintBoxTrianglePlace.TopRight">Сверху справа</option>
+            <option [value]="HintBoxTrianglePlace.BottomRight">Снизу справа</option>
+            <option [value]="HintBoxTrianglePlace.TopLeft">Сверху слева</option>
+            <option [value]="HintBoxTrianglePlace.BottomLeft">Снизу слева</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Цвет подсказки
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="hintBoxSettings.color">
+            <option [value]="HintBoxColor.Light">Светлый</option>
+            <option [value]="HintBoxColor.Dark">Темный</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Максимальная ширина
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="hintBoxSettings.maxWidth"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            ЕИ максимальной ширины
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="hintBoxSettings.maxWidthUnit">
+            <option [value]="HintBoxUnit.None">Отсутствует</option>
+            <option [value]="HintBoxUnit.Pixel">Пиксели</option>
+            <option [value]="HintBoxUnit.Percent">Проценты</option>
+            <option [value]="HintBoxUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="HintBoxUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Минимальная ширина подсказки
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="hintBoxSettings.minWidth"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            ЕИ минимальной ширины
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="hintBoxSettings.minWidthUnit">
+              <option [value]="HintBoxUnit.None">Отсутствует</option>
+              <option [value]="HintBoxUnit.Pixel">Пиксели</option>
+              <option [value]="HintBoxUnit.Percent">Проценты</option>
+              <option [value]="HintBoxUnit.ViewportWidth">Ширина экрана</option>
+              <option [value]="HintBoxUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выравнивание текста
+          </label>
+        </td>
+        <td>
+          <select
+          class="modal-options"
+          [(ngModel)]="hintBoxSettings.textAlignment">
+        <option [value]="HintBoxTextAlignment.Left">Слева</option>
+        <option [value]="HintBoxTextAlignment.Center">По центру</option>
+        <option [value]="HintBoxTextAlignment.Right">Справа</option>
+      </select>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <oasis-hint-box [hintBoxSettings]="hintBoxSettings"></oasis-hint-box>
+</div>
