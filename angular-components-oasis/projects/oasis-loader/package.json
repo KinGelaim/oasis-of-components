@@ -1,5 +1,6 @@
 {
-  "name": "oasis-loader",
+  "name": "@oasis/loader",
+  "author": "Котков Михаил <89123232156@mail.ru>",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^17.3.0",

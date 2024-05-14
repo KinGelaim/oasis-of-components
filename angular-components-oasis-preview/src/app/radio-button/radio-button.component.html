@@ -1,0 +1,106 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер компонента
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.radioButtonsSettings.size">
+            <option [value]="RadioButtonSize.Medium">Средний</option>
+            <option [value]="RadioButtonSize.Small">Маленький</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выравнивание чекбокса
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.radioButtonsSettings.position">
+            <option [value]="RadioButtonPosition.Left">С левой стороны</option>
+            <option [value]="RadioButtonPosition.Right">С правой стороны</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип чекбокса
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.radioButtonsSettings.type">
+            <option [value]="RadioButtonType.Normal">Нейтральный</option>
+            <option [value]="RadioButtonType.Error">Ошибка</option>
+            <option [value]="RadioButtonType.Disabled">Выключено</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr *ngFor="let item of radioButtonsSettings.items; let i = index">
+        <td>
+          <label class="modal-options">
+            Текст {{i}}
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="radioButtonsSettings.items[i].label"/>
+        </td>
+      </tr>
+
+      <tr *ngFor="let item of radioButtonsSettings.items; let i = index">
+        <td>
+          <label class="modal-options">
+            Установка {{i}} значения
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            class="input-checkbox"
+            [(ngModel)]="radioButtonsSettings.items[i].checkedState"
+            (change)="changeChecked(i)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Сбросить выбранное значение
+          </label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="resetSelectedItem()">
+            Сбросить
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="radio-buttons">
+    <div
+        *ngFor="let item of radioButtonsSettings.items; let i = index"
+        class="button">
+      <oasis-radio-button
+        [radioButtonsSettings]="radioButtonsSettings"
+        [numberItem]="i">
+      </oasis-radio-button>
+    </div>
+  </div>
+</div>

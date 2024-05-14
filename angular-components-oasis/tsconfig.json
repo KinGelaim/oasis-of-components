@@ -44,6 +44,9 @@
       "oasis-modal-window": [
         "./dist/oasis-modal-window"
       ],
+      "oasis-radio-button": [
+        "./dist/oasis-radio-button"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]

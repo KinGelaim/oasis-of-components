@@ -12,6 +12,7 @@ import { DropDownListComponent } from './drop-down-list/drop-down-list.component
 import { HintBoxComponent } from './hint-box/hint-box.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { RadioButtonComponent } from './radio-button/radio-button.component';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
     DropDownListComponent,
     HintBoxComponent,
     LoaderComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    RadioButtonComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

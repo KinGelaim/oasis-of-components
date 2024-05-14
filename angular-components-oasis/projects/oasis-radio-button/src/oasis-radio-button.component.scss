@@ -1,0 +1,125 @@
+@use "./../../shared/css/base/reset";
+
+.radio-box {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  height: 20px;
+  cursor: pointer;
+  word-break: break-word;
+  color: #0e2648;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+
+  &_medium {
+    height: 100%;
+    font-size: 14px;
+
+    &_left {
+      padding-left: 28px;
+    }
+
+    &_right {
+      padding-right: 28px;
+      padding-left: 0;
+    }
+  }
+
+  &_small {
+    height: 100%;
+    font-size: 12px;
+
+    &_left {
+      padding-left: 24px;
+    }
+
+    &_right {
+      padding-right: 24px;
+      padding-left: 0;
+    }
+  }
+
+  &_disabled {
+    cursor: default;
+    color: #bdbdbd;
+  }
+
+  &:hover .check-mark_hover {
+    background-color: #e8f2ff;
+  }
+}
+
+.radio-button {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.radio-mark {
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #ffffff;
+
+  &_medium {
+    top: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+  }
+
+  &_small {
+    top: calc(50% - 8px);
+    width: 16px;
+    height: 16px;
+  }
+
+  &_left {
+    left: 0;
+  }
+
+  &_right {
+    right: 0;
+  }
+
+  &_normal {
+    border: 1px solid #5479ab;
+  }
+
+  &_error {
+    border: 2px solid #c51620;
+  }
+
+  &_disabled {
+    cursor: default;
+    border: 1px solid #bdbdbd;
+    background-color: #ebebeb;
+  }
+}
+
+/* Картинки */
+.radio-button:checked~.radio-mark {
+  &.radio-mark_normal {
+    background: url(./../assets/radio-button_normal.svg) center no-repeat;
+  }
+
+  &.radio-mark_error {
+    background: url(./../assets/radio-button_error.svg) center no-repeat;
+  }
+
+  &.radio-mark_disabled {
+    background: url(./../assets/radio-button_disabled.svg) center no-repeat;
+  }
+}
+
+.radio-button:checked~.radio-mark_small {
+  &.radio-mark_normal,
+  &.radio-mark_disabled {
+    background-size: 102%;
+  }
+
+  &.radio-mark_error {
+    background-size: 132%;
+  }
+}

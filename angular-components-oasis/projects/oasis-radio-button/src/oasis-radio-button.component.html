@@ -1,0 +1,25 @@
+<label
+    class="radio-box
+    radio-box_{{radioButtonsSettings.size}}
+    radio-box_{{radioButtonsSettings.size}}_{{radioButtonsSettings.position}}
+    radio-box_{{radioButtonsSettings.type}}">
+  <!--Текст элемента-->
+  {{currentItem.label}}
+
+  <input
+    class="radio-button"
+    name="{{radioButtonsSettings.name}}" 
+    type="radio" 
+    [checked]="currentItem.checkedState"
+    [disabled]="radioButtonsSettings.type == RadioButtonType.Disabled"
+    (change)="changeSelectedItem(currentItem)"/>
+
+    <!--Иконка для отображения радиокнопки-->
+  <span
+    class="radio-mark
+    radio-mark_{{radioButtonsSettings.size}}
+    radio-mark_{{radioButtonsSettings.position}}
+    radio-mark_{{radioButtonsSettings.type}}"
+    [class.check-mark_hover]="!currentItem.checkedState && radioButtonsSettings.type != RadioButtonType.Disabled">
+  </span>
+</label>
