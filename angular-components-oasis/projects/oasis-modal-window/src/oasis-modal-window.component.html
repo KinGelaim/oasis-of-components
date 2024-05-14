@@ -1,0 +1,57 @@
+@if (OasisModalWindowComponent.opened) {
+  <div
+      class="body"
+      tabindex="-1"
+      (click)="closeModal($event)">
+    <div class="modal">
+      <div class="modal__container">
+        <!--Иконка при особом модальном окне-->
+        <div class="modal__icon modal__icon_{{modalSettings.modalType}}"></div>
+  
+        <!--Заголовок модального окна-->
+        @if (modalSettings.isThereHeader) {
+          <div
+              class="modal__header"
+              [class.modal__header_no-icon]="modalSettings.modalType === ModalType.Normal">
+            <p>{{modalSettings.headerText}}</p>
+          </div>
+        }
+  
+        <!--Кнопка закрытия модального окна-->
+        <div
+            class="modal__close"
+            (click)="closeModal($event)">
+          <div class="modal__close_image"></div>
+        </div>
+  
+        <!--Текст модального окна-->
+        <div
+            class="modal__text"
+            [class.modal__text_no-header]="!modalSettings.isThereHeader"
+            [class.modal__text_no-header_icon]="!modalSettings.isThereHeader && modalSettings.modalType != ModalType.Normal">
+          <p [innerHTML]="modalSettings.bodyText"></p>
+        </div>
+  
+        <!-- Нижняя часть модального окна с кнопками -->
+        @if (modalSettings.isThereFooter) {
+          <div class="modal__footer">
+            <!--Сами кнопки-->
+            <div class="footer__buttons">
+              <!--Левая кнопка-->
+              <oasis-button
+                [buttonSettings]="this.modalSettings.buttonSettingsLeft"
+                (onClick)="this.clickLeftButton($event)">
+              </oasis-button>
+              <!--Правая кнопка-->
+              <oasis-button
+                class="buttons__right"
+                [buttonSettings]="this.modalSettings.buttonSettingsRight"
+                (onClick)="this.clickRightButton($event)">
+              </oasis-button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

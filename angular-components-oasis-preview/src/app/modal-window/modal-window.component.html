@@ -1,0 +1,98 @@
+<div class="modal-form">
+  <table>
+    <tr>
+      <td>
+        <label class="modal-options">
+          Тип модального окна
+        </label>
+      </td>
+      <td>
+        <select
+            class="modal-options"
+            [(ngModel)]="modalSettings.modalType">
+          <option value="{{ModalType.Normal}}">Нейтральное</option>
+          <option value="{{ModalType.Warning}}">Предупреждение</option>
+          <option value="{{ModalType.Success}}">Успех</option>
+          <option value="{{ModalType.Error}}">Ошибка</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label class="modal-options">
+          Текст заголовка
+        </label>
+      </td>
+      <td>
+        <textarea [(ngModel)]="modalSettings.headerText"></textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label class="modal-options">
+          Текст сообщения
+        </label>
+      </td>
+      <td>
+        <textarea
+          [(ngModel)]="modalSettings.bodyText"
+          rows="10">
+        </textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label class="modal-options">
+          Кнопки
+        </label>
+      </td>
+      <td>
+        <input
+          type="checkbox"
+          [(ngModel)]="modalSettings.isThereFooter">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label class="modal-options">
+          Текст левой кнопки
+        </label>
+      </td>
+      <td>
+        <textarea [(ngModel)]="modalSettings.buttonSettingsLeft.textButton"></textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label class="modal-options">
+          Текст правой кнопки
+        </label>
+      </td>
+      <td>
+        <textarea [(ngModel)]="modalSettings.buttonSettingsRight.textButton"></textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <label class="modal-options">
+          Отобразить модальное окно
+        </label>
+      </td>
+      <td>
+        <button
+            class="open-btn"
+            (click)="openModal()">
+          Показать
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<oasis-modal-window [modalSettings]="modalSettings"></oasis-modal-window>

@@ -27,7 +27,10 @@ export enum AngularComponent {
   HintBox = 9,
 
   /** Загрузчик */
-  Loader = 10
+  Loader = 10,
+
+  /** Модальное окно */
+  ModalWindow = 11
 }
 
 export const AllComponents = new Map<AngularComponent, string>([
@@ -40,5 +43,6 @@ export const AllComponents = new Map<AngularComponent, string>([
   [AngularComponent.DigitInput, "Числовое поле"],
   [AngularComponent.DropDownList, "Выпадающий список"],
   [AngularComponent.HintBox, "Всплывающая подсказка"],
-  [AngularComponent.Loader, "Загрузчик"]
+  [AngularComponent.Loader, "Загрузчик"],
+  [AngularComponent.ModalWindow, "Модальное окно"]
 ]);

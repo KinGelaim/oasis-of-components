@@ -11,6 +11,7 @@ import { DigitInputComponent } from './digit-input/digit-input.component';
 import { DropDownListComponent } from './drop-down-list/drop-down-list.component';
 import { HintBoxComponent } from './hint-box/hint-box.component';
 import { LoaderComponent } from './loader/loader.component';
+import { ModalWindowComponent } from './modal-window/modal-window.component';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,8 @@ import { LoaderComponent } from './loader/loader.component';
     DigitInputComponent,
     DropDownListComponent,
     HintBoxComponent,
-    LoaderComponent
+    LoaderComponent,
+    ModalWindowComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

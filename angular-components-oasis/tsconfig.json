@@ -41,6 +41,9 @@
       "oasis-loader": [
         "./dist/oasis-loader"
       ],
+      "oasis-modal-window": [
+        "./dist/oasis-modal-window"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]

@@ -28,6 +28,7 @@
     "@oasis/drop-down-list": "file:dist/oasis-drop-down-list",
     "@oasis/hint-box": "file:dist/oasis-hint-box",
     "@oasis/loader": "file:dist/oasis-loader",
+    "@oasis/modal-window": "file:dist/oasis-modal-window",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
