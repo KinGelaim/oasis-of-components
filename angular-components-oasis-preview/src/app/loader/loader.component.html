@@ -1,0 +1,46 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Отображение
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="visibleLoader">
+            <option [ngValue]="true">Отображать</option>
+            <option [ngValue]="false">Скрыть</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Фон компонента
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [ngModel]="loaderSettings.colorBackground"
+              (click)="setColorBackground($event)">
+            <option [value]="LoaderColorBackground.Transparent">Прозрачный</option>
+            <option [value]="LoaderColorBackground.Blur">Прозрачный с размытием</option>
+            <option [value]="LoaderColorBackground.Shaded">Затемненный</option>
+            <option [value]="LoaderColorBackground.White">Белый (закрывает все)</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <div class="frame">
+      @if (visibleLoader) {
+        <oasis-loader [loaderSettings]="loaderSettings"></oasis-loader>
+      }
+    </div>
+  </div>
+</div>

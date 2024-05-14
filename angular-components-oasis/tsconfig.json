@@ -38,6 +38,9 @@
       "oasis-hint-box": [
         "./dist/oasis-hint-box"
       ],
+      "oasis-loader": [
+        "./dist/oasis-loader"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]
