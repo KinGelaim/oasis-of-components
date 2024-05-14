@@ -1,0 +1,79 @@
+<div
+    #dropDown
+    class="drop-down">
+  <div
+      tabindex="0"
+      class="drop-down-picker
+            drop-down-picker_{{this.dropDownSettings.size}}"
+      [class.drop-down-picker_open]="this.isOpenedDropDown"
+      [class.drop-down-picker_disabled]="this.dropDownItemSettings.isDisabled"
+      [style.width]="this.dropDownSettings.widthUnit !=  DropDownUnit.None
+                      ? this.dropDownSettings.width + this.dropDownSettings.widthUnit
+                      : 'auto'"
+      [style.backgroundColor]="this.dropDownItemSettings.isDisabled
+                                ? this.dropDownSettings.disableBackgroundColor
+                                : this.dropDownSettings.backgroundColor"
+      (click)="this.switchingDropDown()"
+      (focus)="this.setFocus($event)"
+      (blur)="this.setBlur($event)">
+    <!--Выбранный в данный момент элемент или подсказка-->
+    <p
+        class="drop-down-picker__text
+              drop-down-picker__text_{{this.dropDownSettings.size}}"
+        [style.color]="this.currentColorText">
+      {{this.placeholderDisplay}}
+    </p>
+
+    <!--Картинка с треугольником-->
+    <div
+        class="drop-down-picker__image
+              drop-down-picker__image_{{this.dropDownSettings.size}}">
+      <div
+        class="drop-down-picker__image-svg"
+        [class.drop-down-picker__image-svg_disabled]="this.dropDownItemSettings.isDisabled"
+        [class.drop-down-picker__image-svg_rotated]="this.isOpenedDropDown">
+      </div>
+    </div>
+  </div>
+
+  <!--Выпадающий список с данными-->
+  <div
+      class="drop-down-list"
+      [class.drop-down-list_not-visible]="!this.isOpenedDropDown"
+      [style.width]="this.dropDownSettings.widthUnit !=  DropDownUnit.None
+                    ? this.dropDownSettings.width + this.dropDownSettings.widthUnit
+                    : 'auto'">
+    <!--Сами элементы-->
+    @for (item of this.dropDownSettings.items; track $index) {
+      <div
+          class="drop-down-list__item
+                drop-down-list__item_{{this.dropDownSettings.size}}"
+          [class.drop-down-list__item_disabled]="item.disabled"
+          [class.drop-down-list__item_multi]="this.dropDownSettings.isMultiSelectable"
+          [class.drop-down-list__item_checked]="this.checkInclude(item)"
+          [style.backgroundColor]="this.setBackgroundColorSingle(item)"
+          (click)="this.choiceSelectedItem(item)"
+          (mouseenter)="this.changeColorMouse(item, false)"
+          (mouseleave)="this.changeColorMouse(item, true)">
+        <!--Картинка при множественном выборе-->
+        @if (this.dropDownSettings.isMultiSelectable) {
+          <div
+            class="drop-down-list__item-image
+                  drop-down-list__item-image_{{this.dropDownSettings.size}}"
+            [class.drop-down-list__item-image_checked]="this.checkInclude(item)"
+            [class.drop-down-list__item-image_disabled]="item.disabled"
+            [style.background]="this.setBackgroundColorMulti(item)">
+          </div>
+        }
+
+        <!--Текст списка-->
+        <p
+            class="drop-down-list__item-text
+                  drop-down-list__item-text_{{this.dropDownSettings.size}}"
+            [style.color]="item.disabled ? this.dropDownSettings.disableFontColorItem : this.dropDownSettings.fontColor">
+          {{item.display}}
+        </p>
+      </div>
+    }
+  </div>
+</div>

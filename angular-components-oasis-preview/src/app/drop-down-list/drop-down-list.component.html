@@ -1,0 +1,368 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Отключить все
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.dropDownSettingsFirstAndSecond.itemsSettings[0].isDisabled"
+            (change)="this.setDisabled()"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Размер выпадающего списка </p>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.dropDownSettingsFirstAndSecond.size"
+              (change)="this.setSize()">
+            <option [value]="DropDownSize.Medium">Средний</option>
+            <option [value]="DropDownSize.Small">Маленький</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина выпадающего списка
+          </label>
+        </td>
+        <td>
+          <input
+            [(ngModel)]="this.dropDownSettingsFirstAndSecond.width"
+            (input)="this.setWidth()"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Единицы измерения</p>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.dropDownSettingsFirstAndSecond.widthUnit"
+              (change)="this.setWidthUnit()">
+            <option [value]="DropDownUnit.None">Отсутствует</option>
+            <option [value]="DropDownUnit.Pixel">Пиксели</option>
+            <option [value]="DropDownUnit.Percent">Проценты</option>
+            <option [value]="DropDownUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="DropDownUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выберите цвет фона<br />
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="this.dropDownSettingsFirstAndSecond.backgroundColor"
+            (change)="this.setNewBackgroundColor()"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выберите цвет текста <br/>
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            [(ngModel)]="this.dropDownSettingsFirstAndSecond.fontColor"
+            (change)="this.setNewFontColor()"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Добавление элемента
+          </label>
+
+        </td>
+        <td>
+          <input #inputValue/><br/>
+          <label class="modal-options">
+            Блокировка
+            <input
+              #checkboxValue
+              type="checkbox"
+              class="input-checkbox"/>
+          </label>
+          <button
+              class="open-btn"
+              (click)="this.addDropDownItem(this.inputValue, this.checkboxValue)">
+            Добавить
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Разрешить emit для 1 значения
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            (click)="this.changeRepeatEmit($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое из 1 значение
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [value]="this.viewValueFirst"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое из 2 значение
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [value]="this.viewValueSecond"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое из 3 значение<br/>
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [value]="this.viewValueThird"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое из 4 значение<br/>
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [value]="this.viewValueFourth"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое из 5 значение<br/>
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [value]="this.viewValueFifth"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Выбор случайного элемента в 1-2</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.selectElement()">
+            Выбор элемента
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Выбор случайного элемента в 1-2</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.selectElementWithoutEmit()">
+            Выбор элемента без emit
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Выбор случайного элемента в 4</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.selectElements()">
+            Выбор элементов
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сброс выбранных элементов в 1-2</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetElement()">
+            Сброс элемента с emit
+          </button>
+          <button
+              class="open-btn"
+              (click)="this.resetElementWithoutEmit()">
+            Сброс элемента без emit
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сброс выбранных элементов в 4</p>
+        </td>
+        <td>
+          <button
+          class="open-btn"
+          (click)="this.resetElementsFourth()">
+        Сброс элементов
+      </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сброс элементов в 5 (все, кроме выключенных) без emit</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetElementsFifth(false)">
+            Сброс элементов
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сброс элементов в 5 (все) без emit</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetElementsFifth(true)">
+            Сброс элементов
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Сброс  элементов в 5 (все) с emit</p>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.resetElementsFifthWithEmit(true)">
+            Сброс элементов
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Заблокировать 4 значение в 5 </p>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.dropDownSettingsFifth.items[3].disabled"
+            (change)="this.setDisabledFourthElementFifthSettings(this.dropDownSettingsFifth.items[3])"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="drop-downs">
+    <div class="drop-down">
+      <oasis-drop-down-list
+        [dropDownSettings]="this.dropDownSettingsFirstAndSecond"
+        [dropDownItemSettings]="this.dropDownSettingsFirstAndSecond.itemsSettings[0]"
+        (onSelectedItemChange)="this.getClickItemFirst($event)"
+        (onFocus)="this.visibleFocus($event, 1)"
+        (onBlur)="this.visibleBlur($event, 1)">
+      </oasis-drop-down-list>
+    </div>
+
+    <div class="drop-down">
+      <oasis-drop-down-list
+        [dropDownSettings]="this.dropDownSettingsFirstAndSecond"
+        [dropDownItemSettings]="this.dropDownSettingsFirstAndSecond.itemsSettings[1]"
+        (onSelectedItemChange)="this.getClickItemSecond($event)"
+        (onFocus)="this.visibleFocus($event, 2)"
+        (onBlur)="this.visibleBlur($event, 2)">
+      </oasis-drop-down-list>
+    </div>
+
+    <div class="drop-down">
+      <oasis-drop-down-list
+        [dropDownSettings]="this.dropDownSettingsThird"
+        [dropDownItemSettings]="this.dropDownSettingsThird.itemsSettings[0]"
+        (onSelectedItemChange)="this.getClickItemThird($event)"
+        (onFocus)="this.visibleFocus($event, 3)"
+        (onBlur)="this.visibleBlur($event, 3)">
+      </oasis-drop-down-list>
+    </div>
+
+    <div class="drop-down">
+      <oasis-drop-down-list
+        [dropDownSettings]="this.dropDownSettingsFourth"
+        [dropDownItemSettings]="this.dropDownSettingsFourth.itemsSettings[0]"
+        (onSelectedItemsChange)="this.getClickItemsFourth($event)"
+        (onFocus)="this.visibleFocus($event, 4)"
+        (onBlur)="this.visibleBlur($event, 4)">
+      </oasis-drop-down-list>
+    </div>
+
+    <div class="drop-down">
+      <oasis-drop-down-list
+        [dropDownSettings]="this.dropDownSettingsFifth"
+        [dropDownItemSettings]="this.dropDownSettingsFifth.itemsSettings[0]"
+        (onSelectedItemsChange)="this.getClickItemsFifth($event)"
+        (onFocus)="this.visibleFocus($event, 5)"
+        (onBlur)="this.visibleBlur($event, 5)">
+      </oasis-drop-down-list>
+    </div>
+  </div>
+</div>

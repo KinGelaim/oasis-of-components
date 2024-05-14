@@ -25,6 +25,7 @@
     "@oasis/check-box": "file:dist/oasis-check-box",
     "@oasis/combo-box": "file:dist/oasis-combo-box",
     "@oasis/digit-input": "file:dist/oasis-digit-input",
+    "@oasis/drop-down-list": "file:dist/oasis-drop-down-list",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

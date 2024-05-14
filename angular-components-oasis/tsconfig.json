@@ -32,6 +32,9 @@
       "oasis-digit-input": [
         "./dist/oasis-digit-input"
       ],
+      "oasis-drop-down-list": [
+        "./dist/oasis-drop-down-list"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]
