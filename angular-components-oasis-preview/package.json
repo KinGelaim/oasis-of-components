@@ -30,6 +30,7 @@
     "@oasis/loader": "file:dist/oasis-loader",
     "@oasis/modal-window": "file:dist/oasis-modal-window",
     "@oasis/radio-button": "file:dist/oasis-radio-button",
+    "@oasis/short-calendar": "file:dist/oasis-short-calendar",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

@@ -13,6 +13,7 @@ import { HintBoxComponent } from './hint-box/hint-box.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
+import { ShortCalendarComponent } from './short-calendar/short-calendar.component';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,8 @@ import { RadioButtonComponent } from './radio-button/radio-button.component';
     HintBoxComponent,
     LoaderComponent,
     ModalWindowComponent,
-    RadioButtonComponent
+    RadioButtonComponent,
+    ShortCalendarComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

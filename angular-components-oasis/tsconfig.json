@@ -47,6 +47,9 @@
       "oasis-radio-button": [
         "./dist/oasis-radio-button"
       ],
+      "oasis-short-calendar": [
+        "./dist/oasis-short-calendar"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]

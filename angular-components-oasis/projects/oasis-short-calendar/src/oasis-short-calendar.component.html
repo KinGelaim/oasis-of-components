@@ -1,0 +1,137 @@
+<!-- Контейнер для всего компонента -->
+<div
+    class="calendar-container">
+  <!--Поле с выводом данных-->
+  <div
+      class="calendar-datepicker"
+      [class.calendar-datepicker_multiselectable]="this.shortCalendarSettings.multiSelectable"
+      [class.calendar-datepicker_disabled]="this.shortCalendarSettings.isDisabled"
+      [ngStyle]="{
+        'width': this.shortCalendarSettings.width != null && this.shortCalendarSettings.widthUnit != this.ShortCalendarWidth.None
+                  ? (this.shortCalendarSettings.width) + (this.shortCalendarSettings.widthUnit)
+                  : '',
+        'height': this.shortCalendarSettings.height != null && this.shortCalendarSettings.heightUnit != this.ShortCalendarWidth.None
+                  ? (this.shortCalendarSettings.height) + (this.shortCalendarSettings.heightUnit)
+                  : '',
+        'background-color': this.shortCalendarSettings.calendarBackgroundColor
+                            ? this.shortCalendarSettings.isDisabled
+                              ? this.shortCalendarSettings.backgroundColorDisabledIcon
+                              : this.shortCalendarSettings.calendarBackgroundColor
+                            : ''
+      }">
+    <div class="calendar-datepicker__text-container">
+      <!--Текст в основном поле календаря-->
+      @if (!this.shortCalendarSettings.onlyIcon) {
+        <div class="calendar-datepicker__all-text">
+          <!--Дата в календаре или первая дата, если календарь с множественным выбором-->
+          <div
+              class="calendar-datepicker__text calendar-datepicker__text_{{this.shortCalendarSettings.calendarSize}}"
+              [class.calendar-datepicker__text_disabled]="this.shortCalendarSettings.isDisabled"
+              [class.calendar-datepicker__start-date-text]="this.shortCalendarSettings.multiSelectable">
+              <span>{{this.shortCalendarSettings.selectedDates.firstDayNumber}} {{this.shortCalendarSettings.selectedDates.firstMonth?.nameGenitive}}</span>
+          </div>
+        </div>
+      }
+
+      <!--Прочерк между датами в двойном календаре-->
+      @if (this.shortCalendarSettings.multiSelectable && this.shortCalendarSettings.selectedDates.firstDayNumber != null) {
+        <div class="calendar-datepicker__dash"></div>
+      }
+
+      <!--Вторая дата, если календарь со множественным выбором-->
+      @if (this.shortCalendarSettings.multiSelectable) {
+        <div
+            class="calendar-datepicker__text calendar-datepicker__text_{{this.shortCalendarSettings.calendarSize}} calendar-datepicker__end-date-text"
+            [class.calendar-datepicker__text_disabled]="this.shortCalendarSettings.isDisabled">
+          <span>{{this.shortCalendarSettings.selectedDates.secondDayNumber}} {{this.shortCalendarSettings.selectedDates.secondMonth?.nameGenitive}}</span>
+        </div>
+      }
+    </div>
+
+    <!--Иконка календаря-->
+    <div
+        class="calendar-datepicker__icon"
+        [class.calendar-datepicker__icon_disabled]="this.shortCalendarSettings.isDisabled"
+        (click)="this.shortCalendarSettings.isCalendarIconWork && calendarOpen()">
+      <img
+        class="calendar-datepicker__icon-img calendar-datepicker__icon-img_{{this.shortCalendarSettings.calendarSize}}"
+        [attr.src]="this.shortCalendarSettings.isDisabled && !this.shortCalendarSettings.onlyIcon
+                    ? './assets/short-calendar/calendar-icon_' + this.shortCalendarSettings.calendarSize + '-disabled.svg'
+                    : './assets/short-calendar/calendar-icon_' + this.shortCalendarSettings.calendarSize + '-' + this.shortCalendarSettings.typeIcon + '.svg'"/>
+    </div>
+  </div>
+
+  <!-- Модальное окошко календаря -->
+  <div
+      #calendarModal
+      class="calendar-modal"
+      [class.calendar-modal_hidden]="!this.isOpenedModal"
+      [class.calendar-modal_open-horizontal-reverse]="this.shortCalendarSettings.isNeedHorizontalReverse">
+    <!-- Отображение календаря в виде таблицы дней -->
+    @if (this.currentPeriod == PeriodType.Day) {
+      <div>
+        <div class="calendar-modal__header header-days">
+          <!--Месяц-->
+          <div class="header-days__month">
+            <span class="header-days__month-text">{{this.shortCalendarSettings.selectedDates.firstMonth?.name}}</span>
+          </div>
+        </div>
+  
+        <!--Сама таблица дней-->
+        <div class="calendar-modal__body-days">
+          @for (week of this.allDays; track $index) {
+            <div class="calendar-modal__row calendar-modal__row-days">
+              @for (day of week; track $index) {
+                <div
+                    class="calendar-modal__cell"
+                    [class.calendar-modal__cell_disabled]="this.day.isDisabled">
+                  @if (this.shortCalendarSettings.selectedDates.firstMonth != null && day.isVisible) {
+                    <div
+                        class="calendar-modal__cell-text calendar-modal__cell-text-day"
+                        (click)="this.selectDay(day)">
+                      <span>{{day.dayNumber}}</span>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!--Отображение календаря в виде таблицы месяцев-->
+    @if (this.currentPeriod == PeriodType.Month) {
+      <div class="calendar-modal__body-months">
+        <div class="calendar-modal__months">
+          @for (monthRow of this.shortCalendarSettings.allMonth; track $index) {
+            <div class="calendar-modal__row calendar-modal__row-months">
+              @for (month of monthRow; track $index) {
+                <div
+                    class="calendar-modal__cell calendar-modal__cell-text calendar-modal__cell-text-month"
+                    (click)="this.selectMonth(month)">
+                  <span>{{month.name}}</span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!--Кнопка "Сегодня"-->
+    <div class="calendar-modal__footer">
+      <div
+          class="calendar-modal__today-btn"
+          [class.calendar-modal__today-btn_disabled]="this.isTodayDisabled"
+          (click)="this.selectToday()">
+        <span>Сегодня</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Область всего экрана, чтобы не вызывать действия на странице при клике вне календаря -->
+@if (this.closableCoverActive) {
+  <div class="closable-cover"></div>
+}

@@ -1,0 +1,313 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Отключить календарь
+          </label>
+        </td>
+        <td>
+          <input
+            [(ngModel)]="this.isDisabled"
+            type="checkbox"
+            (change)="this.setDisabled()">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина календаря
+          </label>
+        </td>
+        <td>
+          <input (input)="this.changeWidth($event)" value="100" />
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения ширины календаря
+          </label>
+        </td>
+        <td>
+          <select class="modal-options" (change)="this.changeCalendarWidthUnit($event)">
+            <option [value]="ShortCalendarUnit.None">Отсутствует</option>
+            <option [value]="ShortCalendarUnit.Pixel">Пиксели</option>
+            <option [value]="ShortCalendarUnit.Percent">Проценты</option>
+            <option [value]="ShortCalendarUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="ShortCalendarUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Высота календаря
+          </label>
+        </td>
+        <td>
+          <input (input)="this.changeHeight($event)" value="100" />
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения высоты календаря
+          </label>
+        </td>
+        <td>
+          <select class="modal-options" (change)="this.changeCalendarHeightUnit($event)">
+            <option [value]="ShortCalendarUnit.None">Отсутствует</option>
+            <option [value]="ShortCalendarUnit.Pixel">Пиксели</option>
+            <option [value]="ShortCalendarUnit.Percent">Проценты</option>
+            <option [value]="ShortCalendarUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="ShortCalendarUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер календаря
+          </label>
+        </td>
+        <td>
+          <select class="modal-options" (change)="this.changeSize($event)">
+            <option [value]="ShortCalendarSize.Medium">Средний</option>
+            <option [value]="ShortCalendarSize.Small">Маленький</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Можно ли выбрать одну дату дважды
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.shortCalendarSettingsDouble.selectedEqualsDates"
+            (change)="this.selectedEqualDates($event)">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Является ли год високосным
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.isLeapYear"
+            (change)="this.setDaysFebruary()">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Является ли гидрогодом (двойной)
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.shortCalendarSettingsDouble.isHydroYear"
+            (change)="this.setHydroYear($event)">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое значение простого
+          </label>
+        </td>
+        <td>
+          <label class="modal-options">
+            {{this.selectedDateSingle}}
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое значение иконки
+          </label>
+        </td>
+        <td>
+          <label class="modal-options">
+            {{this.selectedDateSingleIcon}}
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое значение двойного
+          </label>
+        </td>
+        <td>
+          <label class="modal-options">
+            {{this.selectedDatesDouble}}
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Сброс даты в календаре с emit
+          </label>
+        </td>
+        <td>
+          <button
+            class="open-btn"
+            (click)="this.clearDateWithEmit()"
+          >Сбросить дату </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Сброс даты в календаре без emit
+          </label>
+        </td>
+        <td>
+          <button
+            class="open-btn"
+            (click)="this.clearDateWithoutEmit()">
+              Сбросить дату
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Установить случайную дату в календаре с emit
+          </label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.setDatesWithEmit()">
+            Установить дату
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Установить случайную дату в календаре без emit
+          </label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.setDatesWithoutEmit()">
+            Установить дату
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Установить null и случайную дату (двойной)
+          </label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.setDatesWithoutEmitWithNull()">
+            Установить дату
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>Заблокировать сегодняшнюю дату</label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.setDisableToday()">
+            Заблокировать
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.setDisabledDates()">
+            Заблокировать случайные даты
+          </button>
+        </td>
+        <td>
+          <label [innerHTML]="this.disabledDates"></label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>Сбросить заблокированные даты</label>
+        </td>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.clearDisabledDates()">
+            Сброс
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button
+              class="open-btn"
+              (click)="this.getDates()">
+            Получить дату в календарях
+          </button>
+        </td>
+        <td>
+          <label [innerHTML]="this.allSelectedDates"></label>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="calendars">
+    <div class="calendar">
+      <label>Обычный календарь</label>
+      <oasis-short-calendar [shortCalendarSettings]="this.shortCalendarSettingsSingle"></oasis-short-calendar>
+    </div>
+
+    <div class="calendar">
+      <label>Обычный календарь в виде иконки</label>
+      <oasis-short-calendar [shortCalendarSettings]="this.shortCalendarSettingsSingleIcon"></oasis-short-calendar>
+    </div>
+
+    <div class="calendar">
+      <label>Двойной календарь</label>
+      <oasis-short-calendar [shortCalendarSettings]="this.shortCalendarSettingsDouble"></oasis-short-calendar>
+    </div>
+  </div>
+</div>
