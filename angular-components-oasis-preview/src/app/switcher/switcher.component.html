@@ -1,0 +1,136 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина переключателя
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.switcherSettings.width"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.switcherSettings.widthUnit">
+            <option [value]="SwitcherUnit.None">Отсутствует</option>
+            <option [value]="SwitcherUnit.Pixel">Пиксели</option>
+            <option [value]="SwitcherUnit.Percent">Проценты</option>
+            <option [value]="SwitcherUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="SwitcherUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер поля
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="switcherSettings.size">
+            <option [value]="SwitcherSize.Medium">Среднее</option>
+            <option [value]="SwitcherSize.Small">Маленькое</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Выбранное значение
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              (change)="setNewSelectItem($event)">
+            <option
+                *ngFor="let item of switcherSettings.values"
+                [value]="item.id"
+                [selected]="item.status == SwitcherItemStatus.Selected">
+              {{item.name}}
+            </option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Добавить новое значение
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="testObject.name"/>
+          <select
+              class="modal-options"
+              [(ngModel)]="testObject.colorClick">
+            <option [value]="SwitcherColor.Blue">Синий</option>
+            <option [value]="SwitcherColor.Green">Зеленый</option>
+            <option [value]="SwitcherColor.Orange">Оранжевый</option>
+          </select>
+          <button (click)="addNewObject()">Добавить объект</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Возвращаемое из компонента значение
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [value]="selectedValue.name"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Наведенный объект
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [value]="hoverValue"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Разрешить повторный вызов элемента
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            (click)="changeRepeatEmit($event)">
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <oasis-switcher
+    [switcherSettings]="switcherSettings"
+    (onItemChange)="getClickItem($event)"
+    (onMouseEnterItem)="mouseEnter($event)"
+    (onMouseLeaveItem)="mouseLeave($event)">
+  </oasis-switcher>
+</div>

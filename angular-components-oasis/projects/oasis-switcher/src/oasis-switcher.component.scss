@@ -1,0 +1,79 @@
+@use "./../../shared/css/base/reset";
+
+.switcher {
+  display: flex;
+  font-family: 'Roboto';
+  font-weight: 400;
+
+  &_medium {
+    height: 40px;
+    font-size: 16px;
+  }
+
+  &_small {
+    height: 32px;
+    font-size: 14px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #5479ab;
+    background: #e8f2ff;
+
+    &_blue:hover:not(.switcher__item_blue_disable) {
+      font-weight: 600;
+    }
+
+    &_blue_selected {
+      color: #ffffff;
+      background: #5479ab;
+      font-weight: 600;
+    }
+
+    &_blue_disable{
+      cursor: default;
+      color: #bdbdbd;
+      background: #ebebeb;
+      font-weight: 400;
+    }
+
+    &_green:hover:not(.switcher__item_green_selected, .switcher__item_green_disable) {
+      color: #79cbad;
+      font-weight: 600;
+    }
+
+    &_green_selected {
+      color: #ffffff;
+      background: #79cbad;
+      font-weight: 600;
+    }
+
+    &_green_disable{
+      cursor: default;
+      color: #bdbdbd;
+      background: #ebebeb;
+      font-weight: 400;
+    }
+
+    &_orange:hover:not(.switcher__item_orange_selected, .switcher__item_orange_disable) {
+      color: #ffad4d;
+      font-weight: 600;
+    }
+
+    &_orange_selected {
+      color: #ffffff;
+      background: #ffad4d;
+      font-weight: 600;
+    }
+
+    &_orange_disable{
+      cursor: default;
+      color: #bdbdbd;
+      background: #ebebeb;
+      font-weight: 400;
+    }
+  }
+}

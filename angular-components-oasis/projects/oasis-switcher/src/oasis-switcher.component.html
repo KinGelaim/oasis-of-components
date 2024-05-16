@@ -1,0 +1,23 @@
+<div
+    class="switcher
+          switcher_{{this.switcherSettings.size}}"
+    [style.width]="this.switcherSettings.widthUnit != SwitcherUnit.None
+                  ? this.switcherSettings.width + this.switcherSettings.widthUnit
+                  : 'auto'">
+  <!--Список объектов-->
+  @for (item of this.switcherSettings.values; track $index) {    
+    <div
+        class="switcher__item
+              switcher__item_{{item.colorClick}}
+              switcher__item_{{item.colorClick}}_{{item.status}}"
+        [style.width]="this.switcherSettings.widthUnit != SwitcherUnit.None
+                      ? this.switcherSettings.width/this.switcherSettings.values.length + this.switcherSettings.widthUnit
+                      : 'auto'"
+        (mouseenter)="mouseEnter(item)"
+        (mouseleave)="mouseLeave(item)"
+        (click)="changeSelectedItem(item)">
+      <!--Выводимое наименование-->
+      <p>{{item.name}}</p>
+    </div>
+  }
+</div>

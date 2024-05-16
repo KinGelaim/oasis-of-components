@@ -36,7 +36,10 @@ export enum AngularComponent {
   RadioButton = 12,
 
   /** Укороченный календарь */
-  ShortCalendar = 13
+  ShortCalendar = 13,
+
+  /** Переключатель */
+  Switcher = 14
 }
 
 export const AllComponents = new Map<AngularComponent, string>([
@@ -52,5 +55,6 @@ export const AllComponents = new Map<AngularComponent, string>([
   [AngularComponent.Loader, "Загрузчик"],
   [AngularComponent.ModalWindow, "Модальное окно"],
   [AngularComponent.RadioButton, "Радио кнопка"],
-  [AngularComponent.ShortCalendar, "Укороченный календарь"]
+  [AngularComponent.ShortCalendar, "Укороченный календарь"],
+  [AngularComponent.Switcher, "Переключатель"]
 ]);

@@ -14,6 +14,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { ShortCalendarComponent } from './short-calendar/short-calendar.component';
+import { SwitcherComponent } from './switcher/switcher.component';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +32,8 @@ import { ShortCalendarComponent } from './short-calendar/short-calendar.componen
     LoaderComponent,
     ModalWindowComponent,
     RadioButtonComponent,
-    ShortCalendarComponent
+    ShortCalendarComponent,
+    SwitcherComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

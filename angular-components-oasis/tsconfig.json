@@ -50,6 +50,9 @@
       "oasis-short-calendar": [
         "./dist/oasis-short-calendar"
       ],
+      "oasis-switcher": [
+        "./dist/oasis-switcher"
+      ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
       ]
