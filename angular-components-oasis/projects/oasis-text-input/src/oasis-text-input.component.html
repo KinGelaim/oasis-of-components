@@ -1,0 +1,50 @@
+<div class="text-input">
+  <!--Иконка и рамка вокруг неё, может быть как слева, так и справа-->
+  @if (this.textInputSettings.positionIconUrl != TextInputIconPosition.NotDisplay) {
+    <div
+        class="text-input__icon
+              text-input__icon_{{this.textInputSettings.size}}"
+        [class.text-input__icon_right]="this.textInputSettings.positionIconUrl == TextInputIconPosition.Right">
+      <!--Сама картинка-->
+      <div
+        class="text-input__icon__img"
+        [style.background-image]="'url('+ this.textInputSettings.iconUrl +')'">
+      </div>
+    </div>
+  }
+
+  <!--Иконка загрузки, которая перекрывает все поле ввода-->
+  @if (this.textInputSettings.isLoading) {
+    <div
+        class="text-input__loader"
+        [class.loader_disable]="this.textInputSettings.type === TextInputType.Disable">
+      <div class="text-input__loader-image"></div>
+    </div>
+  }
+
+  <!--Основное поле ввода данных-->
+  <input
+    type="text"
+    class="text-input__box
+          text-input__box_{{this.textInputSettings.type}}
+          text-input__box_{{this.textInputSettings.size}}
+          text-input__box_padding-{{this.textInputSettings.positionIconUrl}}"
+
+    [style.width]="this.textInputSettings.widthUnit != TextInputUnit.None
+                    ? this.textInputSettings.width + this.textInputSettings.widthUnit
+                    : 'auto'"
+    [style.text-align]="this.textInputSettings.textAlign"
+
+    [attr.maxlength]="this.textInputSettings.maxCharacters"
+    [attr.minlength]="this.textInputSettings.minCharacters"
+    [attr.placeholder]="this.textInputSettings.placeholder"
+    [readonly]="this.textInputSettings.type === TextInputType.Disable || this.textInputSettings.isLoading"
+    [value]="this.textInputSettings.value"
+
+    (input)="setInputValue($event)"
+    (blur)="setInputBlur($event)"
+    (focus)="setInputFocus($event)"
+    (keypress)="setInputKeyPress($event)"
+    (keydown)="setInputKeyDown($event)"
+    (keyup)="setInputKeyUp($event)"/>
+</div>

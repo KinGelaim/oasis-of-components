@@ -1,0 +1,146 @@
+@use "./../../shared/css/base/reset";
+
+.text-input {
+  position: relative;
+}
+
+.text-input__box {
+  box-sizing: border-box;
+  padding: 0 14px;
+  color: #0e2648;
+  border: 2px solid #e8f2ff;
+  background: #e8f2ff;
+  font-family: 'Roboto';
+  font-weight: 400;
+
+  &::placeholder {
+    color: #bdbdbd;
+    font-weight: 400;
+  }
+
+  &:hover,
+  &:focus {
+    box-sizing: border-box;
+    border: 2px solid #5479ab;
+    outline: none;
+  }
+
+  &:read-only:not(.text-input__box_error, .text-input__box_warning, .text-input__box_disable) {
+    cursor: default;
+    border: 2px solid #e8f2ff;
+  }
+
+  &_error,
+  &_error:hover,
+  &_error:focus {
+    border: 2px solid #c51620;
+  }
+
+  &_warning,
+  &_warning:hover,
+  &_warning:focus {
+    border: 2px solid #f69c00;
+  }
+
+  &_disable,
+  &_disable:hover,
+  &_disable:focus {
+    color: #bdbdbd;
+    border: 2px solid #e8f2ff;
+    background: #e8f2ff;
+  }
+
+  &_error:read-only,
+  &_warning:read-only,
+  &_disable:read-only {
+    cursor: default;
+  }
+
+  &_medium {
+    height: 40px;
+    font-size: 14px;
+
+    &.text-input__box_padding-left {
+      padding-left: 40px;
+    }
+
+    &.text-input__box_padding-right {
+      padding-right: 40px;
+    }
+  }
+
+  &_small {
+    height: 32px;
+    font-size: 12px;
+
+    &.text-input__box_padding-left {
+      padding-left: 32px;
+    }
+
+    &.text-input__box_padding-right {
+      padding-right: 32px;
+    }
+  }
+}
+
+.text-input__icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__img {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &_right {
+    right: 0;
+  }
+
+  &_medium {
+    width: 40px;
+    height: 40px;
+  }
+
+  &_small {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.text-input__loader {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background: #e8f2ff;
+
+  &-image {
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear 0s infinite;
+    background: url(./../assets/loader.svg) center no-repeat;
+  }
+}
+
+.loader_disable {
+  background: #ebebeb;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

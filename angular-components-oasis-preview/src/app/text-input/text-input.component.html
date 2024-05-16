@@ -1,0 +1,276 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер поля
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.textInputSettings.size">
+            <option [value]="TextInputSize.Medium">Среднее</option>
+            <option [value]="TextInputSize.Small">Маленькое</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип поля<br>(валидация компонента)
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              disabled
+              [ngModel]="this.textInputSettings.type"
+              (change)="setType($event)">
+            <option [value]="TextInputType.Normal">Нейтральное</option>
+            <option [value]="TextInputType.Error">Ошибка</option>
+            <option [value]="TextInputType.Warning">Предупреждение</option>
+            <option [value]="TextInputType.Disable">Выключение</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип поля<br>(проверка стилей только)
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [ngModel]="this.textInputSettings.type"
+              (change)="setTypeTestView($event)">
+            <option [value]="TextInputType.Normal">Нейтральное</option>
+            <option [value]="TextInputType.Error">Ошибка</option>
+            <option [value]="TextInputType.Warning">Предупреждение</option>
+            <option [value]="TextInputType.Disable">Выключение</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Вывод иконки
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.textInputSettings.positionIconUrl">
+            <option [value]="TextInputIconPosition.NotDisplay">Отсутствует</option>
+            <option [value]="TextInputIconPosition.Left">Слева</option>
+            <option [value]="TextInputIconPosition.Right">Справа</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Расположение текста
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.textInputSettings.textAlign">
+            <option [value]="TextInputTextAlign.Left">Слева</option>
+            <option [value]="TextInputTextAlign.Center">По центру</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина поля ввода
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.textInputSettings.width"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения ширины
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.textInputSettings.widthUnit">
+            <option [value]="TextInputUnit.None">Отсутствует</option>
+            <option [value]="TextInputUnit.Pixel">Пиксели</option>
+            <option [value]="TextInputUnit.Percent">Проценты</option>
+            <option [value]="TextInputUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="TextInputUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Текст подсказки
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.textInputSettings.placeholder"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Значение поля ввода
+          </label>
+        </td>
+        <td>
+          <input
+            [value]="this.textInputSettings.value"
+            (input)="setValue($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Минимальное количество символов
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.textInputSettings.minCharacters"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Максимальное количество символов
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.textInputSettings.maxCharacters"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Есть ли фокус на поле?
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [(ngModel)]="isFocus"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Последняя активная нажатая клавиша
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [(ngModel)]="this.lastActionKeyCode"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Отображение загрузки
+          </label>
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [(ngModel)]="this.textInputSettings.isLoading">
+        </td>
+      </tr>
+
+      <tr>
+        <td class="united" colspan="2">
+          <label class="modal-options">
+            Регулярное выражение
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Способ применение регулярного выражения
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.textInputSettings.regularExpressionExecute">
+            <option [value]="TextInputRegularExpressionExecute.NotUse">Не применяется</option>
+            <option [value]="TextInputRegularExpressionExecute.InputProhibition">Запрет ввода данных</option>
+            <option [value]="TextInputRegularExpressionExecute.DisplayError">Вывод ошибки</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип стандартного регулярного выражения
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.textInputSettings.regularExpression">
+            <option [value]="TextInputRegularExpression.NotUse">Не используется</option>
+            <option [value]="TextInputRegularExpression.Digit">Цифры</option>
+            <option [value]="TextInputRegularExpression.DigitDot">Цифры и точка</option>
+            <option [value]="TextInputRegularExpression.DigitDotComma">Цифры, точка и запятая</option>
+            <option [value]="TextInputRegularExpression.CyrillicDigit">Кириллица и цифры</option>
+            <option [value]="TextInputRegularExpression.CyrillicSpace">Кириллица и пробел</option>
+            <option [value]="TextInputRegularExpression.Email">Почта</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Регулярное выражение<br>(number enum или RegExp)
+          </label>
+        </td>
+        <td>
+          <input
+            [value]="this.textInputSettings.regularExpression"
+            (input)="setRegular($event)"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <oasis-text-input
+    [textInputSettings]="this.textInputSettings"
+    (onFocus)="this.setFocus(true)"
+    (onBlur)="this.setFocus(false)"
+    (onKeyPress)="this.setLastActionKeyCode($event)"
+    (onKeyDown)="this.setLastActionKeyCode($event)"
+    (onKeyUp)="this.setLastActionKeyCode($event)">
+  </oasis-text-input>
+</div>

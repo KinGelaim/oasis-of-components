@@ -55,6 +55,9 @@
       ],
       "oasis-tabs": [
         "./dist/oasis-tabs"
+      ],
+      "oasis-text-input": [
+        "./dist/oasis-text-input"
       ]
     },
     "moduleResolution": "node",

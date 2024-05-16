@@ -15,6 +15,7 @@ import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { ShortCalendarComponent } from './short-calendar/short-calendar.component';
 import { SwitcherComponent } from './switcher/switcher.component';
+import { TextInputComponent } from './text-input/text-input.component';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,8 @@ import { SwitcherComponent } from './switcher/switcher.component';
     ModalWindowComponent,
     RadioButtonComponent,
     ShortCalendarComponent,
-    SwitcherComponent
+    SwitcherComponent,
+    TextInputComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

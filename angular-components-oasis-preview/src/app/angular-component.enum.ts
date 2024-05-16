@@ -1,49 +1,51 @@
 export enum AngularComponent {
-  /** Вкладки (табы) */
-  Tabs = 1,
-
   /** Кнопка */
-  Button = 2,
+  Button = 1,
 
   /** Кнопка раздвигающаяся */
-  ButtonExpand = 3,
+  ButtonExpand = 2,
 
   /** Календарь */
-  Calendar = 4,
+  Calendar = 3,
 
   /** Чекбокс */
-  CheckBox = 5,
+  CheckBox = 4,
 
   /** Комбобокс */
-  ComboBox = 6,
+  ComboBox = 5,
 
   /** Числовое поле */
-  DigitInput = 7,
+  DigitInput = 6,
 
   /** Выпадающий список */
-  DropDownList = 8,
+  DropDownList = 7,
 
   /** Всплывающая подсказка */
-  HintBox = 9,
+  HintBox = 8,
 
   /** Загрузчик */
-  Loader = 10,
+  Loader = 9,
 
   /** Модальное окно */
-  ModalWindow = 11,
+  ModalWindow = 10,
 
   /** Радио кнопка */
-  RadioButton = 12,
+  RadioButton = 11,
 
   /** Укороченный календарь */
-  ShortCalendar = 13,
+  ShortCalendar = 12,
 
   /** Переключатель */
-  Switcher = 14
+  Switcher = 13,
+
+  /** Вкладки (табы) */
+  Tabs = 14,
+
+  /** Текстовое поле */
+  TextInput = 15
 }
 
 export const AllComponents = new Map<AngularComponent, string>([
-  [AngularComponent.Tabs, "Вкладки"],
   [AngularComponent.Button, "Кнопка"],
   [AngularComponent.ButtonExpand, "Кнопка раздвигающаяся"],
   [AngularComponent.Calendar, "Календарь"],
@@ -56,5 +58,7 @@ export const AllComponents = new Map<AngularComponent, string>([
   [AngularComponent.ModalWindow, "Модальное окно"],
   [AngularComponent.RadioButton, "Радио кнопка"],
   [AngularComponent.ShortCalendar, "Укороченный календарь"],
-  [AngularComponent.Switcher, "Переключатель"]
+  [AngularComponent.Switcher, "Переключатель"],
+  [AngularComponent.Tabs, "Вкладки"],
+  [AngularComponent.TextInput, "Текстовое поле"]
 ]);
