@@ -33,6 +33,9 @@
     "@oasis/switcher": "file:dist/oasis-switcher",
     "@oasis/tabs": "file:dist/oasis-tabs",
     "@oasis/text-input": "file:dist/oasis-text-input",
+    "@oasis/time-input": "file:dist/oasis-time-input",
+    "luxon": "^3.4.4",
+    "ngx-material-timepicker": "^13.1.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

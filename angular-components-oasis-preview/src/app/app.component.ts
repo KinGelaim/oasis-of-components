@@ -16,6 +16,7 @@ import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { ShortCalendarComponent } from './short-calendar/short-calendar.component';
 import { SwitcherComponent } from './switcher/switcher.component';
 import { TextInputComponent } from './text-input/text-input.component';
+import { TimeInputComponent } from './time-input/time-input.component';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,8 @@ import { TextInputComponent } from './text-input/text-input.component';
     RadioButtonComponent,
     ShortCalendarComponent,
     SwitcherComponent,
-    TextInputComponent
+    TextInputComponent,
+    TimeInputComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

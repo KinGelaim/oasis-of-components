@@ -58,6 +58,9 @@
       ],
       "oasis-text-input": [
         "./dist/oasis-text-input"
+      ],
+      "oasis-time-input": [
+        "./dist/oasis-time-input"
       ]
     },
     "moduleResolution": "node",

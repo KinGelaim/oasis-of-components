@@ -42,7 +42,10 @@ export enum AngularComponent {
   Tabs = 14,
 
   /** Текстовое поле */
-  TextInput = 15
+  TextInput = 15,
+
+  /** Временное поле */
+  TimeInput = 16
 }
 
 export const AllComponents = new Map<AngularComponent, string>([
@@ -60,5 +63,6 @@ export const AllComponents = new Map<AngularComponent, string>([
   [AngularComponent.ShortCalendar, "Укороченный календарь"],
   [AngularComponent.Switcher, "Переключатель"],
   [AngularComponent.Tabs, "Вкладки"],
-  [AngularComponent.TextInput, "Текстовое поле"]
+  [AngularComponent.TextInput, "Текстовое поле"],
+  [AngularComponent.TimeInput, "Временное поле"]
 ]);

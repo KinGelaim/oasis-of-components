@@ -1,0 +1,7 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../angular-components-oasis-preview/dist/oasis-time-input",
+  "lib": {
+    "entryFile": "public-api.ts"
+  }
+}

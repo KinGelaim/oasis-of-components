@@ -1,0 +1,225 @@
+<div class="modal">
+  <div class="modal-form">
+    <table>
+      <tr>
+        <td>
+          <label class="modal-options">
+            Тип поля
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [ngModel]="this.timeInputSettings.type"
+              (change)="setType($event)">
+            <option [value]="TimeInputType.Normal">Нейтральное</option>
+            <option [value]="TimeInputType.Error">Ошибка</option>
+            <option [value]="TimeInputType.Disable">Выключение</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Ширина поля ввода
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.timeInputSettings.width"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Единицы измерения ширины
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.timeInputSettings.widthUnit">
+            <option [value]="TimeInputUnit.None">Отсутствует</option>
+            <option [value]="TimeInputUnit.Pixel">Пиксели</option>
+            <option [value]="TimeInputUnit.Percent">Проценты</option>
+            <option [value]="TimeInputUnit.ViewportWidth">Ширина экрана</option>
+            <option [value]="TimeInputUnit.ViewportHeight">Высота экрана</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Визуальный тип поля
+          </label>
+        </td>
+        <td>
+          <select
+              class="modal-options"
+              [(ngModel)]="this.timeInputSettings.visualType">
+            <option [value]="TimeInputVisualType.Default">Обычный вид</option>
+            <option [value]="TimeInputVisualType.TableCell">Вид ячейки таблицы</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Часы
+          </label>
+          <label class="modal-options">
+            Минуты
+          </label>
+        </td>
+        <td>
+          <label class="modal-options">
+            {{ hours ?? '-' }}
+          </label>
+          <label class="modal-options">
+            {{ minutes ?? '-' }}
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Есть ли фокус на поле?
+          </label>
+        </td>
+        <td>
+          <input
+            disabled
+            [(ngModel)]="isFocus"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Размер шрифта
+          </label>
+        </td>
+        <td>
+          <input [(ngModel)]="this.timeInputSettings.fontSize"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Мин. время в компоненте
+          </label>
+        </td>
+        <td>
+          <input
+            aria-label="24hr format"
+            placeholder="24 часовой формат"
+            readonly
+            [ngxTimepicker]="minTime"
+            [format]="24"
+            [value]="'00:00'"/>
+          <ngx-material-timepicker
+            #minTime
+            (timeSet)="changeMinValue($event)">
+          </ngx-material-timepicker>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Макс. время в компоненте
+          </label>
+        </td>
+        <td>
+          <input
+            aria-label="24hr format"
+            placeholder="24 часовой формат"
+            readonly
+            [ngxTimepicker]="maxTime"
+            [format]="24"
+            [value]="'23:59'"/>
+          <ngx-material-timepicker
+            #maxTime
+            (timeSet)="changeMaxValue($event)">
+          </ngx-material-timepicker>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Запрос значение из компонента<br/>
+            (выводится в консоль)
+          </label>
+        </td>
+        <td>
+          <button (click)="getValue()">
+            Получить текущее значение
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <label class="modal-options">
+            Расцветка
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Цвет фона
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            value="#E8F2FF"
+            (change)="changeBackgroundColor($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Цвет обводки
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            value="#5479AB"
+            (change)="changeBorderColor($event)"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="modal-options">
+            Цвет текста
+          </label>
+        </td>
+        <td>
+          <input
+            type="color"
+            value="#0E2648"
+            (change)="changeFontColor($event)"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <oasis-time-input
+    [timeInputSettings]="this.timeInputSettings"
+    (onFocus)="this.setFocus(true)"
+    (onBlur)="this.setFocus(false)"
+    (onValueChange)="valueChange($event)">
+  </oasis-time-input>
+</div>

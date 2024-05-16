@@ -1,0 +1,24 @@
+<div class="time-input">
+  <input
+    type="text"
+    class="time-input__box
+          time-input__box_{{this.timeInputSettings.type}}
+          time-input__box_{{this.timeInputSettings.visualType}}"
+    [style.width]="this.timeInputSettings.widthUnit != TimeInputUnit.None
+                  ? this.timeInputSettings.width + this.timeInputSettings.widthUnit
+                  : 'auto'"
+    [style.background-color]="this.backgroundColor"
+    [style.border-color]="this.borderColor"
+    [style.color]="this.fontColor"
+    [style.fontSize]="this.timeInputSettings.fontSize + 'px'"
+    placeholder="ЧЧ : ММ"
+    maxlength="7"
+    [readOnly]="this.isDisableType"
+    [value]="this.timeInputSettings.value"
+    (input)="setInputValue($event)"
+    (keydown)="keyDown($event)"
+    (mouseenter)="setHover(true)"
+    (mouseleave)="setHover(false)"
+    (focus)="setInputFocus($event)"
+    (blur)="setInputBlur($event)"/>
+</div>
